@@ -99,7 +99,7 @@ export default [{
        "dimension": "ip",
        "metric": "metric_value",
        "aggregation": "",
-       "result": [      {        
+       "result": [ {        
          "metric_value": 102148867,
                  "ip": "10.83.216.66"      
        },        {        

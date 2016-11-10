@@ -30,6 +30,10 @@ import { TopoComponent } from './topo/topo.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
 
+// Service
+import {ApiConfig} from "./api.service";
+//import { SerTestComponent } from "./ser-test/ser-test.component"
+
 @NgModule({
   declarations: [
     AppComponent, TopologyComponent, NavigationComponent, CalenderComponent, SettingsComponent,
@@ -52,7 +56,7 @@ import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
     TabsModule,
     UserDashboardModule
      ],
-  providers: [appRoutingProviders,RestService],
+  providers: [appRoutingProviders, RestService,UserDashboardComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

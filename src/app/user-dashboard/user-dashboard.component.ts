@@ -7,26 +7,56 @@ import { RestService } from '../services/rest.service';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements OnInit {
+ baseUrl: string = 'http://172.25.182.159:8082/druid/v2/?pretty';
+
+graphReports: Array<any> = [];
+barGraphReports: Array<any> = [];
+pieGraphReports: Array<any> = [];
+lineGraphReports: Array<any> = [];
+guageGraphReports: Array<any> = [];
+
 
   constructor(private restService: RestService){}
 
-  graphReports : any[] = this.restService.DefaultTemplate[0].dashboards[0].reports[0].graphreports;
+   postChart():any
+  {
+
+    let query= {
+      "queryType": "groupBy",
+      "dataSource": "telemetry",
+      "granularity": "all",
+      "dimension": [],
+      "aggregations": [{ "type" : "count", "name" : "rows" }],
+      "intervals" : ["2016-10-14/2016-10-19"]
+    };
 
 
-  barGraphReports = this.graphReports.filter(element => {
+  this.restService.POST(query, this.baseUrl)
+  .subscribe(data => {
+  this.graphReports = data[0].dashboards[0].reports[0].graphreports;
+
+
+  this.barGraphReports = this.graphReports.filter(element => {
                  return element.graphtype == "bar";
               });
-  pieGraphReports = this.graphReports.filter(element => {
+  this.pieGraphReports = this.graphReports.filter(element => {
                 return element.graphtype == "pie";
             });
-  lineGraphReports = this.graphReports.filter(element => {
+  this.lineGraphReports = this.graphReports.filter(element => {
                 return element.graphtype == "line";
             });
-  guageGraphReports = this.graphReports.filter(element => {
+  this.guageGraphReports = this.graphReports.filter(element => {
                 return element.graphtype == "gauge";
             });
+})
+
+}
 
   ngOnInit() {
+
+
+  
+
     console.log("this.graphreports");
     console.log(this.graphReports);
     console.log("this.bargraphReports");

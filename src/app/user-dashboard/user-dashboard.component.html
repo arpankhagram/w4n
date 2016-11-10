@@ -18,10 +18,11 @@
             </div>
          </div>
 
+  <div *ngFor="let all of graphReports1 | async">
           <div *ngFor="let barGraph of barGraphReports">
               <app-bar-chart [barCharts]="barGraph"></app-bar-chart>
          </div>
-
+ </div>
          <div class="col-md-6">
            <div class="widget">
             <app-gauge-chart ></app-gauge-chart>
