@@ -1,0 +1,21 @@
+.text-align{
+	text-align : center;
+}
+
+.child-nav li span{
+	
+    display: inline-block;
+    width: 50px;
+   
+    float: left;
+    opacity: 0.9;
+}
+
+
+/*.silide-nav ul li a span.settings {
+    color: #fff;
+    line-height: 54px;
+    opacity: 0.5;
+    display: block;
+    transition: all 0.5s ease;
+}*/

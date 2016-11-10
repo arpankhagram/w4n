@@ -1,0 +1,41 @@
+ 
+                    <h4>Pagination Type 1</h4>
+                     <nav aria-label="Page navigation ">
+                      <ul class="pagination pagination-lg">
+                      <pagination  [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+                      </ul>
+                    </nav>
+                    <nav aria-label="Page navigation ">
+                      <ul class="pagination">
+                       <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" class="pagination-sm"
+                          previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+                      </ul>
+                    </nav>
+                    <nav aria-label="Page navigation ">
+                      <ul class="pagination pagination-sm">
+                      <pagination [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems"
+                        [(ngModel)]="currentPage"></pagination>
+                      </ul>
+                    </nav>
+                    <h4>Pagination Type 2</h4>
+                    <nav>
+                      <ul class="pager">
+                        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+                        <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                        <!--  <pager [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pager> -->
+                      </ul>
+                    </nav>
+                    <h6><strong>Disable Pagination</strong></h6>
+                    <nav >
+                      <ul class="pager">
+                        <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+                        <li class="next disabled"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                      </ul>
+                    </nav>
+                    <nav aria-label="...">
+                      <ul class="pager">
+                        <li><a href="#">Previous</a></li>
+                        <li><a href="#">Next</a></li>
+                      </ul>
+                    </nav> 
+                 

@@ -1,0 +1,7 @@
+/* Breadcrumb */
+.d-breadvrumb {padding:10px 0}
+.breadcrumb {background-color: rgba(243, 247, 249, 0.74);}
+.breadcrumb.type1{background: #512862;}
+.breadcrumb.type1 > .active {color: #d8d6d6; }
+.breadcrumb.type1 a{ color:#fff;}
+.breadcrumb.type2 {background: none; border-bottom: 1px solid #512862; border-radius: 0;}

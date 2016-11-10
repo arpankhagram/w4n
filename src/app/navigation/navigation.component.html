@@ -1,0 +1,29 @@
+  <aside class="fixed-menu">
+    <div class="menu-btn" #menuItem>
+      <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2" (click)="isCollapsed =true"> <span></span></button>
+    </div>
+    <div class="silide-nav" >
+      <ul>
+          <li > <a routerLink="/userDashboard" routerLinkActive="active"  class="toggleNavbar" ><span class="dashbord-icn"> </span> Dashboard</a></li>
+        <!-- <li > <a routerLink="/home" routerLinkActive="active"  class="toggleNavbar" ><span class="dashbord-icn"> </span> Home</a></li> -->
+     <!-- <li > <a routerLink="/search" routerLinkActive="active"  class="toggleNavbar"> <span class="report-icn"> </span>Search</a></li> -->
+       <li > <a routerLink="/chart" routerLinkActive="active"  class="toggleNavbar"><span class="report-icn"> </span>Charts</a></li>
+       <!-- <li > <a routerLink="/table" routerLinkActive="active" class="toggleNavbar"><span class="report-icn"> </span>Data Table</a></li> -->
+       <li > <a routerLink="/table1" routerLinkActive="active"  class="toggleNavbar"><span class="report-icn"> </span>Data Table 2</a></li>
+       <li > <a routerLink="/topology" routerLinkActive="active" class="toggleNavbar"><span class="sitemap-icn"> </span>Topology</a></li>
+       <li > <a routerLink="/googlemap" routerLinkActive="active" class="toggleNavbar"><span class="location-icn"> </span>Google Map</a></li>
+       <li > <a routerLink="/setting"  routerLinkActive="active" ><span class="setings-icn toggleNavbar" ></span>Settings
+            <i *ngIf="isCollapsed" class="fa fa-plus-square-o plus-sett" aria-hidden="true" (click)="isCollapsed = !isCollapsed"></i>
+            <i class="fa fa-minus-square-o plus-sett" *ngIf="!isCollapsed" (click)="isCollapsed = !isCollapsed" aria-hidden="true"></i>
+            </a>
+      </li>
+        <div [collapse]="isCollapsed" id="settingsComponent" >
+          <li class="nav-item text-align">
+            <a class="toggleNavbar" routerLink="/settings/1">Admin Settings</a>
+            <a class="toggleNavbar"  routerLink="/settings/2">User Settings</a>
+            <a class="toggleNavbar"   routerLink="/settings/3">General Settings</a>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </aside>

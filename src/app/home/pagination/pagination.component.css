@@ -1,0 +1,64 @@
+
+
+li .page-item .active a.page-link, .page-item.active .page-link:focus, .page-item.active .page-link:hover {
+  z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #512862;
+    border-color: #512862;
+  }
+.pager li > a:hover, .pager li > a:focus {
+    text-decoration: none;
+    background-color: #512862;
+    color: #fff;
+    border-color: #371246;
+}
+.pager {
+  padding-left: 0;
+  margin: 20px 0;
+  text-align: center;
+  list-style: none;
+    display: table;
+    width: 100%;
+}
+.pager li {
+  display: inline;
+}
+.pager li > a,
+.pager li > span {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  border-radius: 20px;
+    font-size: 14px;
+}
+.pager li > a:hover,
+.pager li > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span {
+  color: #777;
+  cursor: not-allowed;
+  background-color: #fff;
+}
+
+.pager li > a:hover, .pager li > a:focus {
+    text-decoration: none;
+    background-color: #512862;
+    color: #fff;
+    border-color: #371246;
+}

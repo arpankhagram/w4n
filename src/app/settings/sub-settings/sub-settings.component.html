@@ -1,0 +1,98 @@
+
+<div class="bhoechie-tab-content">
+
+<div class="container">
+<h2 class="text-align" *ngIf='profileType==1'>Admin Settings</h2>
+<h2 class="text-align" *ngIf='profileType==2'>User Settings</h2>
+<h2 class="text-align" *ngIf='profileType==3'>General Settings</h2>
+<br>
+
+                       <form>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">User Name</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleSelect1">Example select</label>
+                          <select class="form-control" id="exampleSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                         <fieldset class="form-group row" *ngIf='profileType!=3'>
+                            <legend class="col-form-legend col-sm-2">Radios</legend>
+                            <div class="col-sm-10">
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                  Option one is this and that&mdash;be sure to include why it's great </label>
+                              </div>
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                  Option two can be something else and selecting it will deselect option one </label>
+                              </div>
+                              <div class="form-check disabled">
+                                <label class="form-check-label">
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                                  Option three is disabled </label>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                            <label class="col-sm-2">Checkbox</label>
+                            <div class="col-sm-10">
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input class="form-check-input" type="checkbox">
+                                  Check me out </label>
+                              </div>
+                            </div>
+                          </div>
+
+                             <div class="form-group row">
+                         <div class="col-sm-5">
+                         <h3>Profile Picture</h3>
+                      <label class="custom-file">
+                        <input type="file" id="file" class="custom-file-input">
+                        <span class="custom-file-control"></span> </label>
+                        </div>
+                        </div>
+                          </fieldset>
+                          
+                      <form>
+                        <fieldset disabled *ngIf='profileType==2'>
+                        <h3>Disable form field</h3>
+                          <div class="form-group">
+                            <label for="disabledTextInput">Disabled input</label>
+                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+                          </div>
+                          <div class="form-group">
+                            <label for="disabledSelect">Disabled select menu</label>
+                            <select id="disabledSelect" class="form-control">
+                              <option>Disabled select</option>
+                            </select>
+                          </div>
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox">
+                              Can't check this </label>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </fieldset>
+                      </form>
+                      <br>
+                          
+                           <br>
+                      
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                      </div>
+                      </div>

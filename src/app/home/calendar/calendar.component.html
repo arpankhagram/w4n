@@ -1,0 +1,43 @@
+
+ <h2>Simple Date Picker</h2>
+
+		<div class="form-group row">
+		  <label for="example-month-input" class="col-xs-2 col-form-label">Pick a date</label>
+		  <div class="col-xs-10" >
+		  
+                 <input  [value]="dt | date:'fullDate'" class="form-control"    (focus)="showPopup()" />
+      
+       <span style="float:right;position:relative;" *ngIf="showDatepicker"><i class="fa fa-times" (click)="hidePopup($event)"></i></span> <span *ngIf="showDatepicker"  (focusout)="hidePopup($event)"><datepicker  class="popup1" [(ngModel)]="dt" [minDate]="minDate" [showWeeks]="true" (selectionDone)="hidePopup($event)" 
+			 ></datepicker></span>
+		
+		  </div>
+			</div>
+			<div class="form-group row">
+	<label for="example-month-input" class="col-xs-2 col-form-label">Pick a date</label>
+	<div class="col-xs-10">
+		<input type="text" class="form-control"  [(ngModel)]="dtJQ" id="datePicker" />
+		<div #datePicker></div>
+</div>
+		  <br><br>
+		</div>
+	
+		<div class="form-group row">
+		  <label for="example-month-input" class="col-xs-2 col-form-label">Pick a time</label>
+		  <div class="col-xs-10">
+		  
+               
+      
+      <timepicker [(ngModel)]="myTime" (change)="changed()" [hourStep]="hstep" 
+            [minuteStep]="mstep" ></timepicker>
+		  </div>
+
+
+		  <br><br>
+
+		
+		</div>
+
+	
+
+  
+ 

@@ -1,0 +1,49 @@
+
+ {
+
+     "sales":[
+     { "name"  : "AllProducts123|Canada", "data" :[44936.0,50752.0] },
+              { "name"  : "AllProducts|Mexico", "data" : [200679.0,226838.0] },
+              { "name"  : "AllProducts|USA",    "data" : [288993.0,289126.0] }
+    ],
+
+"xAxis": {
+            "type": "datetime",
+            "tickPixelInterval": 150,
+            "maxZoom": 20 * 1000
+        },
+        "yAxis":{
+             "minPadding": 0.2,
+            "maxPadding": 0.2,
+            "title": {
+                "text": "Value",
+                "margin": 80
+         }
+            
+        }
+      "user": [ {
+     "firstName": "John",
+     "lastName": "Smith",
+     "age": 25,
+     "address":
+     {
+         "streetAddress": "21 2nd Street",
+         "city": "New York",
+         "state": "NY",
+         "postalCode": "10021"
+     }
+       
+      }]
+        "phoneNumber":
+     
+         {
+           "type": "home",
+           "number": "212 555-1234"
+         }
+         {
+           "type": "fax",
+           "number": "646 555-4567"
+         }
+    
+     }
+

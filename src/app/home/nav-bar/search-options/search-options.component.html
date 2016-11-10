@@ -1,0 +1,21 @@
+<div class="center-search">
+              <div class="input-group">
+ 
+ <input name="search" type="text" placeholder=" Search {{textfromdd}}" [(ngModel)]="customSelected" [typeahead]="statesComplex" (typeaheadOnSelect)="typeaheadOnSelect($event)"
+    [typeaheadOptionField]="'name'" class="search-query">
+                     <button (click)="onClickSearchButton()" type="submit" class="search-btn"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                <div class="input-group-btn advancdrop">
+                     <button type="button" class="btn btn-search btn-default dropdown-toggle " data-toggle="dropdown">
+                          
+                            <span class="caret "></span>
+                        </button>
+                        <ul class="dropdown-menu pull-left" role="menu">
+                           <li *ngFor="let item of items" role="menuitem">
+           <a class="dropdown-item"  (click)="onClickDropdown(item)">{{item}} </a>  
+        </li>
+                        </ul>
+                    </div>         
+                 
+  </div>
+</div>
+           

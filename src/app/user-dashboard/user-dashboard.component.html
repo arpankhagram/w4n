@@ -1,0 +1,47 @@
+<section class="page-title">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Charts</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section  class="main-content">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="widget">
+             <app-pie-chart></app-pie-chart>
+            </div>
+         </div>
+
+          <div *ngFor="let barGraph of barGraphReports">
+              <app-bar-chart [barCharts]="barGraph"></app-bar-chart>
+         </div>
+
+         <div class="col-md-6">
+           <div class="widget">
+            <app-gauge-chart ></app-gauge-chart>
+        </div>
+       </div>
+
+      <div class="col-md-6">
+        <div class="widget">
+         <app-line-chart ></app-line-chart>
+       </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="widget">
+       <app-data-table></app-data-table>
+     </div>
+  </div>
+<!-- <app-ng2-data-table></app-ng2-data-table> -->
+
+
+       </div>
+      </div>
+</section>

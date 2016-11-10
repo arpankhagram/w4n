@@ -1,0 +1,10 @@
+.text-align{
+	text-align : center;
+}
+
+.child-nav li span{
+    display: inline-block;
+    width: 50px;
+    float: left;
+    opacity: 0.9;
+}

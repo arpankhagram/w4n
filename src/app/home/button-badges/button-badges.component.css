@@ -1,0 +1,26 @@
+.btn-secondary, .btn-secondary:focus, .btn-secondary:active {
+   border-color: #8b58a1;
+   background:#fff;
+}
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #512862;
+    border-color: #512862;
+}
+.btn-default {background: #e4e8eb}
+.btn-outline-secondary:hover {
+    color: #8b8b8c;
+    background-color: #e4e8eb;
+    border-color: #e4e8eb;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    border-radius: 0.3rem;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #512862;
+    border-color: #7d548e;
+}

@@ -1,0 +1,13 @@
+
+/* Typography */
+div.bhoechie-tab-content{background-color:#fff;padding:20px 30px;min-height:422px}
+
+.d-typo { padding:0px 0 10px 0}
+.show-grid [class^=col-] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+   background-color: rgb(228, 232, 235);
+    border: 1px solid #ddd;
+    border: 1px solid rgb(255, 255, 255)
+}
+.d-typo h1, .d-typo h2, .d-typo h3, .d-typo h4, .d-typo h5, .d-typo h6 { padding-bottom:20px;}
