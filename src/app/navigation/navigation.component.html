@@ -4,14 +4,26 @@
     </div>
     <div class="silide-nav" >
       <ul>
-          <li > <a routerLink="/userDashboard" routerLinkActive="active"  class="toggleNavbar" ><span class="dashbord-icn"> </span> Dashboard</a></li>
-        <!-- <li > <a routerLink="/home" routerLinkActive="active"  class="toggleNavbar" ><span class="dashbord-icn"> </span> Home</a></li> -->
+        <li > <a routerLink="/dashboard" routerLinkActive="active"  class="" ><span class="dashbord-icn toggleNavbar"> </span> Dashboard
+          <i *ngIf="isCollapsedDashBoard" class="fa fa-plus-square-o plus-sett" aria-hidden="true" (click)="isCollapsedDashBoard = !isCollapsedDashBoard"></i>
+          <i class="fa fa-minus-square-o plus-sett" *ngIf="!isCollapsedDashBoard" (click)="isCollapsedDashBoard = !isCollapsedDashBoard" aria-hidden="true"></i>
+        </a>
+      </li>
+      <div [collapse]="isCollapsedDashBoard" id="dashBoardComponent" >
+        <li class="nav-item text-align">
+          <a class="toggleNavbar" routerLink="/dashboard/UserDashBoard1"><span class="fa fa-user-circle"></span>User_DashBoard1</a>
+          </li>
+        <li class="nav-item text-align">
+
+          <a class="toggleNavbar"  routerLink="/dashboard/UserDashBoard2"><span class="fa fa-user-circle"></span>User_DashBoard2</a>
+        </li>
+      </div>
      <!-- <li > <a routerLink="/search" routerLinkActive="active"  class="toggleNavbar"> <span class="report-icn"> </span>Search</a></li> -->
-       <li > <a routerLink="/chart" routerLinkActive="active"  class="toggleNavbar"><span class="report-icn"> </span>Charts</a></li>
-       <!-- <li > <a routerLink="/table" routerLinkActive="active" class="toggleNavbar"><span class="report-icn"> </span>Data Table</a></li> -->
+       <!-- <li > <a routerLink="/chart" routerLinkActive="active"  class="toggleNavbar"><span class="report-icn"> </span>Charts</a></li>
+       <li > <a routerLink="/table" routerLinkActive="active" class="toggleNavbar"><span class="report-icn"> </span>Data Table</a></li>
        <li > <a routerLink="/table1" routerLinkActive="active"  class="toggleNavbar"><span class="report-icn"> </span>Data Table 2</a></li>
        <li > <a routerLink="/topology" routerLinkActive="active" class="toggleNavbar"><span class="sitemap-icn"> </span>Topology</a></li>
-       <li > <a routerLink="/googlemap" routerLinkActive="active" class="toggleNavbar"><span class="location-icn"> </span>Google Map</a></li>
+       <li > <a routerLink="/googlemap" routerLinkActive="active" class="toggleNavbar"><span class="location-icn"> </span>Google Map</a></li> -->
        <li > <a routerLink="/setting"  routerLinkActive="active" ><span class="setings-icn toggleNavbar" ></span>Settings
             <i *ngIf="isCollapsed" class="fa fa-plus-square-o plus-sett" aria-hidden="true" (click)="isCollapsed = !isCollapsed"></i>
             <i class="fa fa-minus-square-o plus-sett" *ngIf="!isCollapsed" (click)="isCollapsed = !isCollapsed" aria-hidden="true"></i>

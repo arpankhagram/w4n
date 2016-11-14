@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, OnDestroy, ViewChild,Input,OnInit} from '@angular/core';
 import { RestService }  from '../../services/rest.service';
 import {UserDashboardComponent} from '../../user-dashboard/user-dashboard.component';
 declare var $: any;
@@ -11,8 +11,8 @@ import 'highcharts/adapters/standalone-framework.src';
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.css']
 })
-export class LineChartComponent implements AfterViewInit {
-
+export class LineChartComponent implements OnInit {
+@Input() lineCharts: any;
 @ViewChild('chart') public chartEl: ElementRef;
 
   private _chart: any;
@@ -20,86 +20,42 @@ export class LineChartComponent implements AfterViewInit {
   constructor(private restService: RestService,private userDashboardComponent:UserDashboardComponent){}
   templateData : any[] = this.restService.DefaultTemplate;
 
-  getData(lineGraphReports : any){
+  getData(lineGraphReport : any){
     let dimensionVal = "dimension";
     let metricVal = "metric";
     let opt: any = {
         title: {
-            text: 'Line Chart',
+            text: lineGraphReport.name,
             x: -20
         },
         chart:{
           type: 'line'
         },
+        credits: {
+		                enabled: false
+		              },
         xAxis: {
-            categories: lineGraphReports[lineGraphReports[dimensionVal]]
+            categories: lineGraphReport[lineGraphReport[dimensionVal]]
         },
         series: [{
-            name: 'India',
-            data: lineGraphReports[lineGraphReports[metricVal]]
+            name: lineGraphReport[metricVal],
+            data: lineGraphReport[lineGraphReport[metricVal]]
         }]
     };
-
 return opt;
-
-
-
   }
 
-  public ngAfterViewInit() {
-    // let opts: any = {
-    //     title: {
-    //         text: 'Bar Chart',
-    //         x: -20
-    //     },
-    //     chart:{
-    //       type: 'bar'
-    //     },
-    //     xAxis: {
-    //         categories: this.templateData[0].dashboards[0].reports[0].graphreports[0].ip
-    //     },
-    //     series: [{
-    //         name: 'Tokyo',
-    //         data: this.templateData[0].dashboards[0].reports[0].graphreports[0].FreeMemoryPct
-    //     }]
-    // };
-    //
-    // let opt: any = {
-    //     title: {
-    //         text: 'Bar Chart',
-    //         x: -20
-    //     },
-    //     chart:{
-    //       type: 'bar'
-    //     },
-    //     xAxis: {
-    //         categories: this.templateData[0].dashboards[0].reports[0].graphreports[0].ip
-    //     },
-    //     series: [{
-    //         name: 'China',
-    //         data: this.templateData[0].dashboards[0].reports[0].graphreports[0].FreeMemoryPct
-    //     }]
-    // };
-
+  public ngOnInit() {
 
     console.log("configJson");
     console.log(this.restService.DefaultTemplate);
-
-    //
-    // if (this.chartEl && this.chartEl.nativeElement) {
-    //     opts.chart = {
-    //         type: 'bar',``
-    //         renderTo: this.chartEl.nativeElement
-    //     };
-
-   this._chart = new Highcharts.Chart(this.chartEl.nativeElement, this.getData(this.userDashboardComponent.lineGraphReports[0]));
-    //}
-
+    console.log("this.lineCharts");
+    console.log(this.lineCharts);
     // To append the charts
-    for (var j = 1; j < this.userDashboardComponent.lineGraphReports.length; j++) {
+     this._chart = new Highcharts.Chart(this.chartEl.nativeElement, this.getData(this.lineCharts));
+    //  $('#ch').highcharts(opts);
+    console.log("this._chart");
+    console.log(this._chart);
 
-      $("#linesbc").parents('.row').append("<div class='col-md-6'><div class='widget'><div id='ch1'></div></div></div>");
-      $('#ch1').highcharts(this.getData(this.userDashboardComponent.lineGraphReports[j]));
-}
 }
 }

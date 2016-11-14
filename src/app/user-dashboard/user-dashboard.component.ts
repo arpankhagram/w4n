@@ -1,62 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../services/rest.service';
+import { Hero } from '../services/hero';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.css']
+  styleUrls: ['./user-dashboard.component.css'],
+  providers :[RestService]
 })
-export class UserDashboardComponent implements OnInit {
- baseUrl: string = 'http://172.25.182.159:8082/druid/v2/?pretty';
 
-graphReports: Array<any> = [];
-barGraphReports: Array<any> = [];
-pieGraphReports: Array<any> = [];
-lineGraphReports: Array<any> = [];
-guageGraphReports: Array<any> = [];
+export class UserDashboardComponent implements OnInit {
+  heroes: Hero[];
+  response :any;
+  baseUrl: string = 'http://172.25.182.159:8082/druid/v2/?pretty';
 
 
   constructor(private restService: RestService){}
 
-   postChart():any
-  {
-
-    let query= {
-      "queryType": "groupBy",
-      "dataSource": "telemetry",
-      "granularity": "all",
-      "dimension": [],
-      "aggregations": [{ "type" : "count", "name" : "rows" }],
-      "intervals" : ["2016-10-14/2016-10-19"]
-    };
+  jwt : Array<any> = [];
+  graphReports : any[] = this.restService.DefaultTemplate[0].dashboards[0].reports[0].graphreports;
 
 
-  this.restService.POST(query, this.baseUrl)
-  .subscribe(data => {
-  this.graphReports = data[0].dashboards[0].reports[0].graphreports;
-
-
-  this.barGraphReports = this.graphReports.filter(element => {
+  barGraphReports = this.graphReports.filter(element => {
                  return element.graphtype == "bar";
               });
-  this.pieGraphReports = this.graphReports.filter(element => {
+  pieGraphReports = this.graphReports.filter(element => {
                 return element.graphtype == "pie";
             });
-  this.lineGraphReports = this.graphReports.filter(element => {
+  lineGraphReports = this.graphReports.filter(element => {
                 return element.graphtype == "line";
             });
-  this.guageGraphReports = this.graphReports.filter(element => {
+  guageGraphReports = this.graphReports.filter(element => {
                 return element.graphtype == "gauge";
             });
-})
 
-}
 
   ngOnInit() {
-
-
-  
-
     console.log("this.graphreports");
     console.log(this.graphReports);
     console.log("this.bargraphReports");

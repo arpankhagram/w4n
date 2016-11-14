@@ -32,6 +32,9 @@ export class BarChartComponent implements OnInit {
         chart:{
           type: 'bar'
         },
+        credits: {
+		                enabled: false
+		              },
         xAxis: {
             categories: barGraphReport[barGraphReport[dimensionVal]]
         },
@@ -43,8 +46,6 @@ export class BarChartComponent implements OnInit {
 
 return opt;
 
-
-
   }
 
   public ngOnInit() {
@@ -53,15 +54,11 @@ return opt;
     console.log(this.restService.DefaultTemplate);
     console.log("this.barCharts");
     console.log(this.barCharts);
-
-
     // To append the charts
      this._chart = new Highcharts.Chart(this.chartEl.nativeElement, this.getData(this.barCharts));
-
-//  $('#ch').highcharts(opts);
-console.log("this._chart");
-console.log(this.test);
-console.log(this._chart);
+    //  $('#ch').highcharts(opts);
+    console.log("this._chart");
+    console.log(this._chart);
 }
 
 }

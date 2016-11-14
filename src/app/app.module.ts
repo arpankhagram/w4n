@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RestService }          from './services/rest.service';
@@ -28,10 +28,12 @@ import { Ng2DataTableComponent } from './ng2-data-table/ng2-data-table.component
 import { GoogleMapModule } from './google-map/google-map.module';
 import { TopoComponent } from './topo/topo.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserDashboard2Component } from './user-dashboard2/user-dashboard2.component';
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
+import { UserDashboard2Module } from './user-dashboard2/user-dashboard2.module';
 
 // Service
-import {ApiConfig} from "./api.service";
+//import {ApiConfig} from "./api.service";
 //import { SerTestComponent } from "./ser-test/ser-test.component"
 
 @NgModule({
@@ -54,9 +56,15 @@ import {ApiConfig} from "./api.service";
     Ng2TableModule,
     PaginationModule,
     TabsModule,
-    UserDashboardModule
+    UserDashboardModule,
+    UserDashboard2Module
      ],
-  providers: [appRoutingProviders, RestService,UserDashboardComponent],
+  providers: [appRoutingProviders, RestService,UserDashboardComponent,UserDashboard2Component,
+        { provide: APP_INITIALIZER,
+          useFactory: (config: RestService) => () => config.getHeroes(),
+          deps: [RestService],
+          multi: true }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

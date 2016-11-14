@@ -9,6 +9,7 @@ import {ChartsComponent} from './charts/charts.component';
 import {TopologyComponent} from './topology/topology.component';
 import {TopoComponent} from './topo/topo.component';
 import {UserDashboardComponent} from './user-dashboard/user-dashboard.component';
+import {UserDashboard2Component} from './user-dashboard2/user-dashboard2.component';
 
 import {DataTableComponent} from './data-table/data-table.component';
 import { GoogleMapComponent } from './google-map/google-map.component';
@@ -18,8 +19,9 @@ import {Ng2DataTableComponent} from './ng2-data-table/ng2-data-table.component';
 
 
 const appRoutes: Routes = [
-  { path: '',  redirectTo: '/userDashboard',  pathMatch: 'full' },
-  { path: 'userDashboard', component: UserDashboardComponent },
+  { path: '',  redirectTo: 'dashboard/UserDashBoard1',  pathMatch: 'full' },
+  { path: 'dashboard/UserDashBoard1', component: UserDashboardComponent },
+  { path: 'dashboard/UserDashBoard2', component: UserDashboard2Component },
   { path: 'home', component: HomeComponent },
   { path: 'search', component: SearchOptionsComponent },
   { path: 'chart', component: ChartsComponent },

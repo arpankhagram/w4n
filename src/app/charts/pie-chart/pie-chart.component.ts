@@ -16,7 +16,7 @@ import 'highcharts/adapters/standalone-framework.src';
 export class PieChartComponent implements AfterViewInit  {
 
  @ViewChild('chart') public chartEl: ElementRef;
- @ViewChild('chart1') public chartE2: ElementRef;
+ // @ViewChild('chart1') public chartE2: ElementRef;
 
   private _chart: any;
 
@@ -27,23 +27,54 @@ constructor(private restService: RestService){}
     let opts: any = {
         title: {
             text: 'Severity'
-        },
+        }, credits: {
+		                enabled: false
+		              },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            pointFormat: '{series.name}: {point.percentage:.1f}%'
         },
         plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                }
-            }
-        },
+			            pie: {
+			            	size:'50%',
+			                allowPointSelect: true,
+			                showInLegend: true,
+			                cursor: 'pointer',
+			                depth: 10,
+			                overflow: 'justify',
+			                center:["50%","60%"],
+			                minSize:null,
+			                align: 'right',
+			                dataLabels: {
+			                enabled: true,
+			                format: '{point.percentage:.1f} %',
+			                style: {
+			                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'grey'
+			                    }
+			                }
+			            }
+			        },
+			        legend: {
+                itemStyle: {
+                 font: '8pt Trebuchet MS, Verdana, sans-serif',
+                 color: '#A0A0A0'
+              },
+              itemHoverStyle: {
+                 color: '#55BF3B'
+              },
+              itemHiddenStyle: {
+                 color: '#FFF'
+              },
+
+			            layout: 'vertical',
+			            align: 'left',
+			            verticalAlign: 'top',
+			            x: -15,
+			            y: -5,
+                  floating: true,
+			            borderWidth: null,
+			            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+			            shadow: false
+			        },
         series: [{
             name: 'Bytes Consumption',
             colorByPoint: true,
@@ -73,15 +104,13 @@ constructor(private restService: RestService){}
     console.log(this.restService.DefaultTemplate);
     if (this.chartEl && this.chartEl.nativeElement) {
         opts.chart = {
-            type: 'pie',
-            renderTo: this.chartEl.nativeElement
+         margin: [0, 0, 0, 0],
+         plotBackgroundColor: null,
+         plotBorderWidth: null,
+         plotShadow: false,
+         type: 'pie',
+          renderTo: this.chartEl.nativeElement
         };
-        opts.chart = {
-            type: 'pie',
-            renderTo: this.chartE2.nativeElement
-        };
-
-
         this._chart = new Highcharts.Chart(opts);
 
     }

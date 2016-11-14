@@ -759,7 +759,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){display:none}
 
 /***** Dashbaord Widget **********/
 .widget{
-    min-height: 375px; 
+    height: 300px; 
     background: #fff;
     margin: 10px 0;
     border-radius: 3px;

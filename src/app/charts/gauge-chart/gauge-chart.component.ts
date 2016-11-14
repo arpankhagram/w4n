@@ -33,7 +33,9 @@ export class GaugeChartComponent implements AfterViewInit {
 
         chart: {
             type: 'solidgauge'
-        },
+        }, credits: {
+		                enabled: false
+		              },
 
         title: {text:'Availability'},
 
