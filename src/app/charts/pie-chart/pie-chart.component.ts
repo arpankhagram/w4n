@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, OnDestroy, ViewChild,Input ,OnInit} from '@angular/core';
 import { RestService }  from '../../services/rest.service';
 
 
@@ -13,8 +13,8 @@ import 'highcharts/adapters/standalone-framework.src';
   styleUrls: ['./pie-chart.component.css']
 })
 
-export class PieChartComponent implements AfterViewInit  {
-
+export class PieChartComponent implements OnInit  {
+@Input() pieCharts: any;
  @ViewChild('chart') public chartEl: ElementRef;
  // @ViewChild('chart1') public chartE2: ElementRef;
 
@@ -23,97 +23,99 @@ export class PieChartComponent implements AfterViewInit  {
 constructor(private restService: RestService){}
 
 
-  public ngAfterViewInit() {
-    let opts: any = {
-        title: {
-            text: 'Severity'
-        }, credits: {
-		                enabled: false
-		              },
-        tooltip: {
-            pointFormat: '{series.name}: {point.percentage:.1f}%'
+getData(pieGraphReports : any){
+  let dimensionVal = pieGraphReports.graphResponse.configuration.attributes[0].name;
+  let metricVal = pieGraphReports.graphResponse.configuration.attributes[1].name;
+
+
+  let seriesData :Array<any>=[];
+
+  let  resultData : Array<any>=[];
+  resultData = pieGraphReports.graphResponse.response[0].result;
+
+for (var j = 0; j < resultData.length; j++) {
+  let Graphdata =resultData[j];
+  if((Graphdata[dimensionVal])!=null){
+      let data ={
+        "name": Graphdata[dimensionVal],
+        "y": Graphdata[metricVal]
+      }
+seriesData.push(data);
+}
+}
+
+  let opts: any = {
+      title: {
+          text: pieGraphReports.graphResponse.configuration.name,
+      }, credits: {
+                  enabled: false
+                },
+
+chart:{
+          type: 'pie'
         },
-        plotOptions: {
-			            pie: {
-			            	size:'50%',
-			                allowPointSelect: true,
-			                showInLegend: true,
-			                cursor: 'pointer',
-			                depth: 10,
-			                overflow: 'justify',
-			                center:["50%","60%"],
-			                minSize:null,
-			                align: 'right',
-			                dataLabels: {
-			                enabled: true,
-			                format: '{point.percentage:.1f} %',
-			                style: {
-			                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'grey'
-			                    }
-			                }
-			            }
-			        },
-			        legend: {
-                itemStyle: {
-                 font: '8pt Trebuchet MS, Verdana, sans-serif',
-                 color: '#A0A0A0'
-              },
-              itemHoverStyle: {
-                 color: '#55BF3B'
-              },
-              itemHiddenStyle: {
-                 color: '#FFF'
-              },
 
-			            layout: 'vertical',
-			            align: 'left',
-			            verticalAlign: 'top',
-			            x: -15,
-			            y: -5,
-                  floating: true,
-			            borderWidth: null,
-			            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
-			            shadow: false
-			        },
-        series: [{
-            name: 'Bytes Consumption',
-            colorByPoint: true,
-            data: [{ 
-              "name": "10.83.216.66",      
-              "y": 50
-                            
-            },{
-              "name": "10.83.197.242",        
-              "y": 10
-                            
-            }, {        
-               "name": "10.80.120.66",
-              "y": 10
-                           
-            },{        
-             "name": "172.23.7.153", 
-              "y": 20    
-            },{        
-              "name": "172.23.7.154",
-              "y": 10
-                           
-            }]
-        }]
-    };
-    console.log("configJson");
-    console.log(this.restService.DefaultTemplate);
-    if (this.chartEl && this.chartEl.nativeElement) {
-        opts.chart = {
-         margin: [0, 0, 0, 0],
-         plotBackgroundColor: null,
-         plotBorderWidth: null,
-         plotShadow: false,
-         type: 'pie',
-          renderTo: this.chartEl.nativeElement
-        };
-        this._chart = new Highcharts.Chart(opts);
+      tooltip: {
+          pointFormat: '{series.name}: {point.percentage:.1f}%'
+      },
+      plotOptions: {
+                pie: {
+                  size:'80%',
+                    allowPointSelect: true,
+                    showInLegend: true,
+                    cursor: 'pointer',
+                    depth: 10,
+                    overflow: 'justify',
+                    center:["50%","60%"],
+                    minSize:null,
+                    align: 'right',
+                    dataLabels: {
+                    enabled: true,
+                    format: '{point.percentage:.1f} %',
+                    style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'grey'
+                        }
+                    }
+                }
+            },
+            legend: {
+              itemStyle: {
+               font: '8pt Trebuchet MS, Verdana, sans-serif',
+               color: '#A0A0A0'
+            },
+            itemHoverStyle: {
+               color: '#55BF3B'
+            },
+            itemHiddenStyle: {
+               color: '#FFF'
+            },
 
-    }
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: -15,
+                y: -5,
+                floating: true,
+                borderWidth: null,
+                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                shadow: false
+            },
+      series: [{
+          name: 'Bytes Consumption',
+          colorByPoint: true,
+          data:seriesData
+
+      }]
+  };
+return opts;
+
+
+}
+
+public ngOnInit() {
+  // To append the charts
+   this._chart = new Highcharts.Chart(this.chartEl.nativeElement, this.getData(this.pieCharts));
+
 }
 
 }

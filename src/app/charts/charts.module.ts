@@ -27,7 +27,7 @@ import { DualGaugeComponent } from './dual-gauge/dual-gauge.component';
 @NgModule({
     declarations: [ChartsComponent, PieChartComponent, LineChartComponent, BarChartComponent, StackedChartComponent, StackedBarChartComponent, ColumnChartComponent, GaugeChartComponent, WorldMapComponent, TreemapComponent, HeatmapComponent, MultiLineComponent, AreaChartComponent, TimeLineComponent, LocalDirective, OverlayComponent, MixedComponent, StackedGroupedColumnComponent, DualGaugeComponent ],
     imports :[IconsModule,CommonModule],
-    exports : [ChartsComponent,PieChartComponent,BarChartComponent,LineChartComponent,GaugeChartComponent],
+    exports : [ChartsComponent,PieChartComponent,BarChartComponent,LineChartComponent,GaugeChartComponent,MultiLineComponent,ColumnChartComponent],
 })
 
 export class ChartsModule {

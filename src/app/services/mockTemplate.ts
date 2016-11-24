@@ -1,413 +1,1151 @@
-// export const TableData: any =
-export default [{
- "username": "test12",
- "dashboards": [{
-   "dashboard-id": "1",
-   "dashboardname": "Dashbaoard-1",
-   "reports": [{
-     "graphreports": [{
-       "name": "Total Traffic FreeMemoryPct",
-       "id": "1",
-       "type": "TOPN",
-       "graphtype": "bar",
-       "position": "left",
-       "order": "1",
-       "filterexpression": "",
-       "interval": "1 hour",
-       "granularity": "minute",
-       "dimension": "ip",
-       "metric": "FreeMemoryPct",
-       "aggregation": "Average",
-       "ip": [
-         "10.87.25.241",
-         "172.30.97.242",
-         "10.64.144.3",
-         "10.123.96.12",
-         "10.86.205.241"
-       ],
-       "FreeMemoryPct": [
-         5508.4469135802465,
-         2495.276485788114,
-         3466.730158730159,
-         5444.56038647343,
-         4436.191214470285
-       ]
-     }, {
-       "name": "Total Traffic Bytes",
-       "id": "2",
-       "type": "TOPN",
-       "graphtype": "bar",
-       "position": "right",
-       "order": "1",
-       "filterexpression": "",
-       "interval": "1 hour",
-       "granularity": "minute",
-       "dimension": "ip",
-       "metric": "IN_BYTES",
-       "aggregation": "SUM",
-       "ip": [
-         "10.87.25.241",
-         "172.30.97.242",
-         "10.64.144.3",
-         "10.123.96.12",
-         "10.86.205.241"
-       ],
-       "IN_BYTES": [
-         55080,
-         45950,
-         30660,
-         24440,
-         34360
-       ]
-     },{
-       "name": "Total Traffic Pie",
-       "id": "2",
-       "type": "Pie",
-       "graphtype": "pie",
-       "position": "right",
-       "order": "1",
-       "filterexpression": "",
-       "interval": "1 hour",
-       "granularity": "minute",
-       "dimension": "ip",
-       "metric": "metric_value",
-       "aggregation": "",
-       "result": [ {        
-         "metric_value": 102148867,
-                 "ip": "10.83.216.66"      
-       },        {        
-         "metric_value": 101531227,
-                 "ip": "10.83.197.242"      
-       },        {        
-         "metric_value": 101465250,
-                 "ip": "10.80.120.66"      
-       },        {        
-         "metric_value": 101438748,
-                 "ip": "172.23.7.153"      
-       },        {        
-         "metric_value": 100962000,
-                 "ip": "172.23.7.154"      
-       }    ]
-     }, {
-       "name": "Total Traffic Line",
-       "id": "2",
-       "type": "TOPN",
-       "graphtype": "line",
-       "position": "right",
-       "order": "1",
-       "filterexpression": "",
-       "interval": "1 hour",
-       "granularity": "minute",
-       "dimension": "ip",
-       "metric": "IN_BYTES",
-       "aggregation": "SUM",
-       "ip": [
-         "10.87.25.241",
-         "172.30.97.242",
-         "10.64.144.3",
-         "10.123.96.12",
-         "10.86.205.241",
-         "10.87.25.241",
-         "172.30.97.242",
-         "10.64.144.3",
-         "10.123.96.12",
-         "10.86.205.241"
-       ],
-       "IN_BYTES": [
-         55080,
-         54950,
-         54660,
-         54440,
-         54360,
-         30080,
-         33950,
-         20660,
-         11440,
-         12360
-       ]
-     },{
-       "name": "Device Availability",
-       "id": "3",
-       "type": "Graph",
-       "graphtype": "gauge",
-       "position": "right",
-       "order": "1",
-       "filterexpression": "'Device'=='5678'",
-       "interval": "1 hour",
-       "granularity": "",
-       "dimension": "",
-       "metric": "Availability",
-       "aggregation": "Average",
-       "Availability": [
-         99.99
-       ]
-     }],
-     "tableReports": [{
-       "name": "Interface Error Report",
-       "id": "1",
-       "type": "TABLE",
-       "position": "right",
-       "filterexpression": "'device'=='6578'",
-       "attributes": [{
-         "name": "Id",
-         "nodeproperty": "id",
-         "defaultvalue": "asdas",
-         "sort": "asc",
-         "order": 1,
-         "values": [
-           1,
-           2,
-           3,
-           4,
-           5
-         ]
-       }, {
-         "name": "model",
-         "nodeproperty": "model",
-         "defaultvalue": "7",
-         "sort": "asc",
-         "order": 2,
-         "values": [
-           "abc",
-           "def",
-           "xyz",
-           "pqr",
-           "ijk"
-         ]
-       }, {
-         "name": "vendor",
-         "nodeproperty": "vendor",
-         "defaultvalue": "VENDOR6",
-         "sort": "desc",
-         "order": 3,
-         "values": [
-           "123",
-           "456",
-           "789",
-           "910",
-           "112"
-         ]
-       }]
-     }]
-   }]
- },{
-     "dashboard-id": "2",
-     "dashboardname": "Dashbaoard-2",
-     "reports": [{
-       "graphreports": [{
-         "name": "Total Traffic FreeMemoryPct2",
-         "id": "1",
-         "type": "TOPN",
-         "graphtype": "bar",
-         "position": "left",
-         "order": "1",
-         "filterexpression": "",
-         "interval": "1 hour",
-         "granularity": "minute",
-         "dimension": "ip",
-         "metric": "FreeMemoryPct",
-         "aggregation": "Average",
-         "ip": [
-           "10.87.25.241",
-           "172.30.97.242",
-           "10.64.144.3",
-           "10.123.96.12",
-           "10.86.205.241"
-         ],
-         "FreeMemoryPct": [
-           12.4469135802465,
-           24.276485788114,
-           34.730158730159,
-           54.56038647343,
-           44.191214470285
-         ]
-       },{
-         "name": "TopN IPs",
-         "id": "2",
-         "type": "TOPN",
-         "graphtype": "bar",
-         "position": "right",
-         "order": "1",
-         "filterexpression": "",
-         "interval": "1 hour",
-         "granularity": "minute",
-         "dimension": "ip",
-         "metric": "IN_BYTES",
-         "aggregation": "SUM",
-         "ip": [
-           "10.87.25.241",
-           "172.30.97.242",
-           "10.64.144.3",
-           "10.123.96.12",
-           "10.86.205.241"
-         ],
-         "IN_BYTES": [
-           500,
-           100,
-           123,
-           225,
-           335
-         ]
-       },{
-         "name": "Total Traffic Pie 2",
-         "id": "2",
-         "type": "Pie",
-         "graphtype": "pie",
-         "position": "right",
-         "order": "1",
-         "filterexpression": "",
-         "interval": "1 hour",
-         "granularity": "minute",
-         "dimension": "ip",
-         "metric": "metric_value",
-         "aggregation": "",
-         "result": [ {        
-           "metric_value": 102148867,
-                   "ip": "10.83.216.66"      
-         },        {        
-           "metric_value": 101531227,
-                   "ip": "10.83.197.242"      
-         },        {        
-           "metric_value": 101465250,
-                   "ip": "10.80.120.66"      
-         },        {        
-           "metric_value": 101438748,
-                   "ip": "172.23.7.153"      
-         },        {        
-           "metric_value": 100962000,
-                   "ip": "172.23.7.154"      
-         }    ]
-       }, {
-         "name": "Total Traffic Line",
-         "id": "2",
-         "type": "TOPN",
-         "graphtype": "line",
-         "position": "right",
-         "order": "1",
-         "filterexpression": "",
-         "interval": "1 hour",
-         "granularity": "minute",
-         "dimension": "ip",
-         "metric": "IN_BYTES",
-         "aggregation": "SUM",
-         "ip": [
-           "10.87.25.241",
-           "172.30.97.242",
-           "10.64.144.3",
-           "10.123.96.12",
-           "10.86.205.241",
-           "10.87.25.241",
-           "172.30.97.242",
-           "10.64.144.3",
-           "10.123.96.12",
-           "10.86.205.241"
-         ],
-         "IN_BYTES": [
-           55080,
-           54950,
-           54660,
-           54440,
-           54360,
-           30080,
-           33950,
-           20660,
-           11440,
-           12360
-         ]
-       },
-       {
-         "name": "Total Traffic Line",
-         "id": "2",
-         "type": "TOPN",
-         "graphtype": "line",
-         "position": "right",
-         "order": "1",
-         "filterexpression": "",
-         "interval": "1 hour",
-         "granularity": "minute",
-         "dimension": "ip",
-         "metric": "IN_BYTES",
-         "aggregation": "SUM",
-         "ip": [
-           "10.87.25.241",
-           "172.30.97.242",
-           "10.64.144.3",
-           "10.123.96.12",
-           "10.86.205.241"
-         ],
-         "IN_BYTES": [
-           550,
-           249,
-           446,
-           344,
-           543
-         ]
-       },{
-         "name": "Device Availability",
-         "id": "3",
-         "type": "Graph",
-         "graphtype": "gauge",
-         "position": "right",
-         "order": "1",
-         "filterexpression": "'Device'=='5678'",
-         "interval": "1 hour",
-         "granularity": "",
-         "dimension": "",
-         "metric": "Availability",
-         "aggregation": "Average",
-         "Availability": [
-           99.99
-         ]
-       }],
-       "tableReports": [{
-         "name": "Interface Error Report",
-         "id": "1",
-         "type": "TABLE",
-         "position": "right",
-         "filterexpression": "'device'=='6578'",
-         "attributes": [{
-           "name": "Id",
-           "nodeproperty": "id",
-           "defaultvalue": "asdas",
-           "sort": "asc",
-           "order": 1,
-           "values": [
-             1,
-             2,
-             3,
-             4,
-             5
-           ]
-         }, {
-           "name": "model",
-           "nodeproperty": "model",
-           "defaultvalue": "7",
-           "sort": "asc",
-           "order": 2,
-           "values": [
-             "abc",
-             "def",
-             "xyz",
-             "pqr",
-             "ijk"
-           ]
-         }, {
-           "name": "vendor",
-           "nodeproperty": "vendor",
-           "defaultvalue": "VENDOR6",
-           "sort": "desc",
-           "order": 3,
-           "values": [
-             "123",
-             "456",
-             "789",
-             "910",
-             "112"
-           ]
-         }]
-       }]
-     }]
+export default {
+
+    "userId": null,
+    "userName": null,
+    "reportName": null,
+    "dashboardReports": [
+      {
+        "id": "1",
+        "name": "Dashboard1",
+        "graphReports": [
+
+          {
+            "graphResponse": {
+              "configuration": {
+                "position": "right",
+                "id": "2",
+                "order": "1",
+                "name": "Total Traffic Line",
+                "graphtype": "bar",
+                "type": "TOPN",
+                "attributes": [
+                  {
+                    "name": "ip",
+                    "displayName": "IP",
+                    "axis": "x"
+                  },
+                  {
+                    "name": "metricvalue",
+                    "displayName": "Metric Value",
+                    "axis": "y"
+                  }
+                ]
+              },
+              "response": [
+                {
+                  "timestamp": "2016-11-14T13:56:44.511Z",
+                  "result": [
+                    {
+                      "metricvalue": 81601468,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 54972304,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 54819155,
+                      "ip": "172.23.7.120"
+                    },
+                    {
+                      "metricvalue": 54656562,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 54618159,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 54615688,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 54602434,
+                      "ip": "10.83.216.66"
+                    },
+                    {
+                      "metricvalue": 54554338,
+                      "ip": "172.23.7.153"
+                    },
+                    {
+                      "metricvalue": 54536227,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 54526896,
+                      "ip": "10.81.121.241"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+
+          
+          {
+            "graphResponse": {
+              "configuration": {
+                "position": "left",
+                "id": "3",
+                "order": "1",
+                "name": "Total Traffic Line",
+                "graphtype": "multi-bar",
+                "type": "TOPN",
+                "attributes": [
+                  {
+                    "name": "ip",
+                    "displayName": "IP",
+                    "axis": "x"
+                  },
+                  {
+                    "name": "metricvalue",
+                    "displayName": "BYTES",
+                    "axis": "y"
+                  }
+                ]
+              },
+              "response": [
+                {
+                  "timestamp": "2016-11-14T13:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 4974728,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 3493232,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 3446228,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 3420593,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 3392631,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 3388538,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 3373638,
+                      "ip": "10.80.89.241"
+                    },
+                    {
+                      "metricvalue": 3348231,
+                      "ip": "10.83.197.242"
+                    },
+                    {
+                      "metricvalue": 3337839,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 3335493,
+                      "ip": "10.83.205.241"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T14:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75833505,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 51040214,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50786043,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 50781380,
+                      "ip": "10.81.121.241"
+                    },
+                    {
+                      "metricvalue": 50765162,
+                      "ip": "10.83.205.242"
+                    },
+                    {
+                      "metricvalue": 50683242,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 50617229,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50569891,
+                      "ip": "10.83.216.66"
+                    },
+                    {
+                      "metricvalue": 50395021,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50304788,
+                      "ip": "10.83.205.243"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T15:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75738616,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50748871,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 50738858,
+                      "ip": "10.83.205.242"
+                    },
+                    {
+                      "metricvalue": 50729526,
+                      "ip": "10.83.216.66"
+                    },
+                    {
+                      "metricvalue": 50686686,
+                      "ip": "10.83.205.241"
+                    },
+                    {
+                      "metricvalue": 50670860,
+                      "ip": "10.80.89.241"
+                    },
+                    {
+                      "metricvalue": 50635408,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 50611379,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50518069,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50492950,
+                      "ip": "172.23.7.154"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T16:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75260000,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50666904,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50650821,
+                      "ip": "10.83.205.241"
+                    },
+                    {
+                      "metricvalue": 50549420,
+                      "ip": "172.23.7.153"
+                    },
+                    {
+                      "metricvalue": 50521604,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 50402100,
+                      "ip": "10.81.121.241"
+                    },
+                    {
+                      "metricvalue": 50377001,
+                      "ip": "172.23.7.120"
+                    },
+                    {
+                      "metricvalue": 50335920,
+                      "ip": "10.80.89.241"
+                    },
+                    {
+                      "metricvalue": 50316080,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50308302,
+                      "ip": "172.23.7.154"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T17:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75624770,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50824023,
+                      "ip": "10.81.121.241"
+                    },
+                    {
+                      "metricvalue": 50755312,
+                      "ip": "10.80.89.241"
+                    },
+                    {
+                      "metricvalue": 50679001,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50509166,
+                      "ip": "10.83.197.242"
+                    },
+                    {
+                      "metricvalue": 50458729,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50450412,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 50441865,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 50436823,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 50432643,
+                      "ip": "10.83.216.66"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T18:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75250110,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50747090,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 50701571,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50652595,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50648596,
+                      "ip": "10.83.197.242"
+                    },
+                    {
+                      "metricvalue": 50634838,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 50563861,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 50390273,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50355750,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50325489,
+                      "ip": "10.83.216.66"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T19:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75707736,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50848012,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50693114,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50681374,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 50540683,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50503563,
+                      "ip": "10.83.205.241"
+                    },
+                    {
+                      "metricvalue": 50490138,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50469361,
+                      "ip": "10.81.121.241"
+                    },
+                    {
+                      "metricvalue": 50432902,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 50365933,
+                      "ip": "172.23.7.153"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T20:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 76388458,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50837192,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50816691,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50721209,
+                      "ip": "10.83.205.242"
+                    },
+                    {
+                      "metricvalue": 50683635,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50565967,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 50561195,
+                      "ip": "172.23.7.153"
+                    },
+                    {
+                      "metricvalue": 50551541,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50551218,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50534525,
+                      "ip": "10.83.216.66"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T21:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 76163996,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 51063310,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50669879,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50641265,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50599256,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 50569589,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 50538678,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50520855,
+                      "ip": "10.83.216.66"
+                    },
+                    {
+                      "metricvalue": 50483435,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 50482950,
+                      "ip": "10.83.205.241"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T22:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75747584,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50877873,
+                      "ip": "172.23.7.120"
+                    },
+                    {
+                      "metricvalue": 50743176,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 50621937,
+                      "ip": "10.83.197.242"
+                    },
+                    {
+                      "metricvalue": 50596607,
+                      "ip": "10.83.205.242"
+                    },
+                    {
+                      "metricvalue": 50574339,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 50453554,
+                      "ip": "172.23.7.153"
+                    },
+                    {
+                      "metricvalue": 50423288,
+                      "ip": "10.83.205.241"
+                    },
+                    {
+                      "metricvalue": 50421419,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50361341,
+                      "ip": "10.80.29.241"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T23:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75468932,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 51025251,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50817257,
+                      "ip": "172.23.7.153"
+                    },
+                    {
+                      "metricvalue": 50742418,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50650182,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 50647849,
+                      "ip": "10.80.89.241"
+                    },
+                    {
+                      "metricvalue": 50601536,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50554228,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50525323,
+                      "ip": "10.83.216.66"
+                    },
+                    {
+                      "metricvalue": 50352959,
+                      "ip": "10.83.205.241"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "graphResponse": {
+              "configuration": {
+                "position": "left",
+                "id": "3",
+                "order": "1",
+                "name": "Total Traffic Line",
+                "graphtype": "multi-line",
+                "type": "TOPN",
+                "attributes": [
+                  {
+                    "name": "ip",
+                    "displayName": "IP",
+                    "axis": "x"
+                  },
+                  {
+                    "name": "metricvalue",
+                    "displayName": "BYTES",
+                    "axis": "y"
+                  }
+                ]
+              },
+              "response": [
+                {
+                  "timestamp": "2016-11-14T13:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 4974728,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 3493232,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 3446228,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 3420593,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 3392631,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 3388538,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 3373638,
+                      "ip": "10.80.89.241"
+                    },
+                    {
+                      "metricvalue": 3348231,
+                      "ip": "10.83.197.242"
+                    },
+                    {
+                      "metricvalue": 3337839,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 3335493,
+                      "ip": "10.83.205.241"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T14:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75833505,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 51040214,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50786043,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 50781380,
+                      "ip": "10.81.121.241"
+                    },
+                    {
+                      "metricvalue": 50765162,
+                      "ip": "10.83.205.242"
+                    },
+                    {
+                      "metricvalue": 50683242,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 50617229,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50569891,
+                      "ip": "10.83.216.66"
+                    },
+                    {
+                      "metricvalue": 50395021,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50304788,
+                      "ip": "10.83.205.243"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T15:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75738616,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50748871,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 50738858,
+                      "ip": "10.83.205.242"
+                    },
+                    {
+                      "metricvalue": 50729526,
+                      "ip": "10.83.216.66"
+                    },
+                    {
+                      "metricvalue": 50686686,
+                      "ip": "10.83.205.241"
+                    },
+                    {
+                      "metricvalue": 50670860,
+                      "ip": "10.80.89.241"
+                    },
+                    {
+                      "metricvalue": 50635408,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 50611379,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50518069,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50492950,
+                      "ip": "172.23.7.154"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T16:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75260000,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50666904,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50650821,
+                      "ip": "10.83.205.241"
+                    },
+                    {
+                      "metricvalue": 50549420,
+                      "ip": "172.23.7.153"
+                    },
+                    {
+                      "metricvalue": 50521604,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 50402100,
+                      "ip": "10.81.121.241"
+                    },
+                    {
+                      "metricvalue": 50377001,
+                      "ip": "172.23.7.120"
+                    },
+                    {
+                      "metricvalue": 50335920,
+                      "ip": "10.80.89.241"
+                    },
+                    {
+                      "metricvalue": 50316080,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50308302,
+                      "ip": "172.23.7.154"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T17:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75624770,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50824023,
+                      "ip": "10.81.121.241"
+                    },
+                    {
+                      "metricvalue": 50755312,
+                      "ip": "10.80.89.241"
+                    },
+                    {
+                      "metricvalue": 50679001,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50509166,
+                      "ip": "10.83.197.242"
+                    },
+                    {
+                      "metricvalue": 50458729,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50450412,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 50441865,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 50436823,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 50432643,
+                      "ip": "10.83.216.66"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T18:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75250110,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50747090,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 50701571,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50652595,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50648596,
+                      "ip": "10.83.197.242"
+                    },
+                    {
+                      "metricvalue": 50634838,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 50563861,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 50390273,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50355750,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50325489,
+                      "ip": "10.83.216.66"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T19:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75707736,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50848012,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50693114,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50681374,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 50540683,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50503563,
+                      "ip": "10.83.205.241"
+                    },
+                    {
+                      "metricvalue": 50490138,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50469361,
+                      "ip": "10.81.121.241"
+                    },
+                    {
+                      "metricvalue": 50432902,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 50365933,
+                      "ip": "172.23.7.153"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T20:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 76388458,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50837192,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50816691,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50721209,
+                      "ip": "10.83.205.242"
+                    },
+                    {
+                      "metricvalue": 50683635,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50565967,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 50561195,
+                      "ip": "172.23.7.153"
+                    },
+                    {
+                      "metricvalue": 50551541,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50551218,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50534525,
+                      "ip": "10.83.216.66"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T21:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 76163996,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 51063310,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50669879,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50641265,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50599256,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 50569589,
+                      "ip": "172.23.7.121"
+                    },
+                    {
+                      "metricvalue": 50538678,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50520855,
+                      "ip": "10.83.216.66"
+                    },
+                    {
+                      "metricvalue": 50483435,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 50482950,
+                      "ip": "10.83.205.241"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T22:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75747584,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 50877873,
+                      "ip": "172.23.7.120"
+                    },
+                    {
+                      "metricvalue": 50743176,
+                      "ip": "10.87.73.241"
+                    },
+                    {
+                      "metricvalue": 50621937,
+                      "ip": "10.83.197.242"
+                    },
+                    {
+                      "metricvalue": 50596607,
+                      "ip": "10.83.205.242"
+                    },
+                    {
+                      "metricvalue": 50574339,
+                      "ip": "10.83.205.243"
+                    },
+                    {
+                      "metricvalue": 50453554,
+                      "ip": "172.23.7.153"
+                    },
+                    {
+                      "metricvalue": 50423288,
+                      "ip": "10.83.205.241"
+                    },
+                    {
+                      "metricvalue": 50421419,
+                      "ip": "172.23.7.154"
+                    },
+                    {
+                      "metricvalue": 50361341,
+                      "ip": "10.80.29.241"
+                    }
+                  ]
+                },
+                {
+                  "timestamp": "2016-11-14T23:00:00.000Z",
+                  "result": [
+                    {
+                      "metricvalue": 75468932,
+                      "ip": null
+                    },
+                    {
+                      "metricvalue": 51025251,
+                      "ip": "10.80.29.241"
+                    },
+                    {
+                      "metricvalue": 50817257,
+                      "ip": "172.23.7.153"
+                    },
+                    {
+                      "metricvalue": 50742418,
+                      "ip": "10.83.177.241"
+                    },
+                    {
+                      "metricvalue": 50650182,
+                      "ip": "172.23.7.115"
+                    },
+                    {
+                      "metricvalue": 50647849,
+                      "ip": "10.80.89.241"
+                    },
+                    {
+                      "metricvalue": 50601536,
+                      "ip": "10.86.37.241"
+                    },
+                    {
+                      "metricvalue": 50554228,
+                      "ip": "10.80.120.66"
+                    },
+                    {
+                      "metricvalue": 50525323,
+                      "ip": "10.83.216.66"
+                    },
+                    {
+                      "metricvalue": 50352959,
+                      "ip": "10.83.205.241"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "tableReports": null
+      },
+      {
+        "id": "2",
+        "name": "Dashboard2",
+            "graphReports": [],
+            "tableReports":[]
 
 
- }]
-}]
+      },
+      {
+        "id": "3",
+        "name": "Dashboard3",
+        "graphReports": [],
+        "tableReports":[]
+      },
+      {
+        "id": "4",
+        "name": "Dashboard4",
+        "graphReports": [],
+        "tableReports":[]
+      }
+    ]
+  }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input,AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input,OnInit, OnDestroy, ViewChild } from '@angular/core';
 
 const Highcharts = require('highcharts/highcharts.src');
 import 'highcharts/adapters/standalone-framework.src';
@@ -8,84 +8,138 @@ import 'highcharts/adapters/standalone-framework.src';
   templateUrl: './column-chart.component.html',
   styleUrls: ['./column-chart.component.css']
 })
-export class ColumnChartComponent implements AfterViewInit {
- @Input() customopts: any;
+export class ColumnChartComponent implements OnInit {
+   @Input() columnChart: any;
 @ViewChild('chart') public chartEl: ElementRef;
 
   private _chart: any;
 
-  public ngAfterViewInit() {
-    let opts: any = {
-        title: {
-            text: 'Column Chart'
-        },
-        subtitle: {
-            text: 'Source: WorldClimate.com'
-        },
-        xAxis: {
-            categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
-            ],
-            crosshair: true
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: 'Rainfall (mm)'
-            }
-        },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        series: [{
-            name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+    getData(columnGraphReport : any){
+      let dimensionVal = columnGraphReport.graphResponse.configuration.attributes[0].name;
+      let metricVal = columnGraphReport.graphResponse.configuration.attributes[1].name;
+      let timestampSeries : Array<any> = [];
+      let seriesData : Array<any> = [];
 
-        }, {
-            name: 'New York',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+      let zattribute : Map<any,any[]> = new Map();
 
-        }, {
-            name: 'London',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
 
-        }, {
-            name: 'Berlin',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+      let yAxisAttribute =  columnGraphReport.graphResponse.configuration.attributes[1].name
 
-        }]
-    };
+       let timeSeriesResponseData = columnGraphReport.graphResponse.response;
 
-    if (this.chartEl && this.chartEl.nativeElement) {
-        opts.chart = {
-            type: 'column',
-            renderTo: this.chartEl.nativeElement
-        };
+       for (var j = 0; j < timeSeriesResponseData.length; j++) {
+         let Graphdata =timeSeriesResponseData[j];
+            timestampSeries.push(Graphdata.timestamp);
+            let result = Graphdata.result;
+               for (var i = 0; i < result.length; i++) {
+                 let entry = result[i];
+                 let value : Array<any>=[];
 
-        this._chart = new Highcharts.Chart(opts);
+                 if((entry[dimensionVal]) !=null){
+                   if( (entry[dimensionVal]) != '10.83.205.243'){
+                 value = zattribute.get((entry[dimensionVal]));
+                 if(value != null)
+                 {
+                        value.push((entry[metricVal])/1048576 )
+                  }
+                 else
+                 {
+                   value=[];
+                   value.push((entry[metricVal])/1048576);
+                 }
+                 zattribute.set(entry[dimensionVal] ,value);
+               }
+  }
+               }
+
+       }
+
+       console.log("this.timestampSeries");
+                    console.log(timestampSeries);
+                    console.log("this.zattribute");
+                    console.log(zattribute);
+
+                    zattribute.forEach((value: [any[]], key: String) => {
+
+                        let data ={
+
+                          "name": key,
+                          "data": value
+                        }
+                        seriesData.push(data);
+
+                    });
+
+                    console.log("this.seriesData");
+                    console.log(seriesData);
+
+      let opts: any = {
+          title: {
+              text: columnGraphReport.graphResponse.configuration.name
+          },credits: {
+                      enabled: false
+                    },
+
+         chart: {
+              type: 'column'
+              },
+
+          subtitle: {
+              text: ''
+          },
+          xAxis: {
+              categories: timestampSeries,
+              crosshair: true,
+              title: {
+                  text:columnGraphReport.graphResponse.configuration.attributes[0].displayName       }
+          },
+          yAxis: {
+              min: 0,
+
+              title: {
+                  text:columnGraphReport.graphResponse.configuration.attributes[1].displayName       }
+          },  legend: {
+              itemStyle: {
+               font: '8pt Trebuchet MS, Verdana, sans-serif',
+               color: 'black'
+            },
+            itemHoverStyle: {
+               color: '#55BF3B'
+            },
+            itemHiddenStyle: {
+               color: '#A0A0A0'
+            },
+
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'bottom',
+                x: -15,
+                y: -50,
+                floating: false,
+                borderWidth: null,
+                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                shadow: true
+            },tooltip: {
+              headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+              pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                  '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+              footerFormat: '</table>',
+              shared: true,
+              useHTML: true
+          },
+          plotOptions: {
+              column: {
+                  pointPadding: 0.2,
+                  borderWidth: 0
+              }
+          },
+          series:seriesData
+      };
+      return opts;
     }
-}
+
+    public ngOnInit() {
+       this._chart = new Highcharts.Chart(this.chartEl.nativeElement, this.getData(this.columnChart));
+    }
 
 }

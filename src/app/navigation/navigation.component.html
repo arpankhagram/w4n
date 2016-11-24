@@ -1,41 +1,56 @@
-  <aside class="fixed-menu">
-    <div class="menu-btn" #menuItem>
-      <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2" (click)="isCollapsed =true"> <span></span></button>
-    </div>
-    <div class="silide-nav" >
-      <ul>
-        <li > <a routerLink="/dashboard" routerLinkActive="active"  class="" ><span class="dashbord-icn toggleNavbar"> </span> Dashboard
-          <i *ngIf="isCollapsedDashBoard" class="fa fa-plus-square-o plus-sett" aria-hidden="true" (click)="isCollapsedDashBoard = !isCollapsedDashBoard"></i>
-          <i class="fa fa-minus-square-o plus-sett" *ngIf="!isCollapsedDashBoard" (click)="isCollapsedDashBoard = !isCollapsedDashBoard" aria-hidden="true"></i>
-        </a>
-      </li>
-      <div [collapse]="isCollapsedDashBoard" id="dashBoardComponent" >
-        <li class="nav-item text-align">
-          <a class="toggleNavbar" routerLink="/dashboard/UserDashBoard1"><span class="fa fa-user-circle"></span>User_DashBoard1</a>
-          </li>
-        <li class="nav-item text-align">
+<aside class="fixed-menu">
+   <div class="menu-btn" #menuItem>
+     <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2" (click)="isCollapsed =true"> <span></span></button>
+   </div>
 
-          <a class="toggleNavbar"  routerLink="/dashboard/UserDashBoard2"><span class="fa fa-user-circle"></span>User_DashBoard2</a>
-        </li>
-      </div>
-     <!-- <li > <a routerLink="/search" routerLinkActive="active"  class="toggleNavbar"> <span class="report-icn"> </span>Search</a></li> -->
-       <!-- <li > <a routerLink="/chart" routerLinkActive="active"  class="toggleNavbar"><span class="report-icn"> </span>Charts</a></li>
-       <li > <a routerLink="/table" routerLinkActive="active" class="toggleNavbar"><span class="report-icn"> </span>Data Table</a></li>
-       <li > <a routerLink="/table1" routerLinkActive="active"  class="toggleNavbar"><span class="report-icn"> </span>Data Table 2</a></li>
-       <li > <a routerLink="/topology" routerLinkActive="active" class="toggleNavbar"><span class="sitemap-icn"> </span>Topology</a></li>
-       <li > <a routerLink="/googlemap" routerLinkActive="active" class="toggleNavbar"><span class="location-icn"> </span>Google Map</a></li> -->
-       <li > <a routerLink="/setting"  routerLinkActive="active" ><span class="setings-icn toggleNavbar" ></span>Settings
-            <i *ngIf="isCollapsed" class="fa fa-plus-square-o plus-sett" aria-hidden="true" (click)="isCollapsed = !isCollapsed"></i>
-            <i class="fa fa-minus-square-o plus-sett" *ngIf="!isCollapsed" (click)="isCollapsed = !isCollapsed" aria-hidden="true"></i>
-            </a>
-      </li>
-        <div [collapse]="isCollapsed" id="settingsComponent" >
-          <li class="nav-item text-align">
-            <a class="toggleNavbar" routerLink="/settings/1">Admin Settings</a>
-            <a class="toggleNavbar"  routerLink="/settings/2">User Settings</a>
-            <a class="toggleNavbar"   routerLink="/settings/3">General Settings</a>
-          </li>
-        </div>
-      </ul>
-    </div>
-  </aside>
+   <div class="silide-nav" >
+
+     <ul>
+       <li> <a routerLink="/dashboard1" routerLinkActive="active" class=""><span class="dashbord-icn toggleNavbar"> </span> Dashboard
+           <i *ngIf="isCollapsedDashBoard" class="fa fa-plus-square-o plus-sett" aria-hidden="true" (click)="isCollapsedDashBoard = !isCollapsedDashBoard"></i>
+           <i class="fa fa-minus-square-o plus-sett" *ngIf="!isCollapsedDashBoard" (click)="isCollapsedDashBoard = !isCollapsedDashBoard" aria-hidden="true"></i>
+         </a>
+       </li>
+       <div style="color:white;" [collapse]="isCollapsedDashBoard" id="dashBoardComponent">
+         <li style="color:white;" *ngFor="let dash of dashBaordDataArray" class="nav-item text-align">
+           <a style="color:white;" class="toggleNavbar" [routerLink]="['/dashboard',dash.dashboardId]">{{dash.dashbaordName}}</a>
+           <i *ngIf="dash.collapse===false " class="fa fa-plus-square-o plus-sett" aria-hidden="true" (click)="dash.collapse = !dash.collapse" ></i>
+           <i class="fa fa-minus-square-o plus-sett" *ngIf="dash.collapse===true" (click)="dash.collapse = !dash.collapse" aria-hidden="true"></i>
+           <div [collapse]="!dash.collapse" id="settingsComponent">
+             <li class="nav-item text-align">
+                 <div>
+                 <li *ngFor = "let report of dash.reports" class="nav-item text-align" style="color:pink !important">
+                     <a [routerLink]="['/dashboard',dash.dashboardId,'report',report.ReportId]" routerLinkActive="active" style="color:white;" class="toggleNavbar">{{report.ReportName}}</a>
+                 </li>
+               </div>
+             </li>
+           </div>
+         </li>
+       </div>
+
+       <li> <a style="color:white;" ><span style="color:white;"class="report-icn toggleNavbar" style="color: white !important"></span>My Reports
+             <i style="color:white;" *ngIf="isCollapsed" class="fa fa-plus-square-o plus-sett" aria-hidden="true" (click)="isCollapsed = !isCollapsed"></i>
+             <i style="color:white;" class="fa fa-minus-square-o plus-sett" *ngIf="!isCollapsed" (click)="isCollapsed = !isCollapsed" aria-hidden="true"></i>
+             </a>
+       </li>
+
+
+       <div [collapse]="isCollapsed" id="settingsComponent">
+         <li class="nav-item text-align">
+           <a style="color:white;" class="toggleNavbar" routerLink="/addNewReport" >Add Report</a>
+           <a style="color:white;" class="toggleNavbar" >My Reports</a><i style="color:white;" *ngIf="collapseReport" class="fa fa-plus-square-o plus-sett" aria-hidden="true" (click)="collapseReport = !collapseReport"></i>
+           <i style="color:white;" class="fa fa-minus-square-o plus-sett" *ngIf="!collapseReport" (click)="collapseReport = !collapseReport" aria-hidden="true"></i>
+           <div [collapse]="collapseReport">
+             <li *ngFor = "let report of myReportsArray" class="nav-item text-align" style="color:pink !important">
+                 <a [routerLink]="['/dashboard',report.dashId,'report',report.ReportId]" routerLinkActive="active" style="color:white;" class="toggleNavbar">{{report.ReportName}}</a>
+             </li>
+           </div>
+         </li>
+       </div>
+
+       <li > <a routerLink="/alarm" routerLinkActive="active"  class="toggleNavbar"> <span class="alarms-icn"> </span>Alarms</a></li>
+       <!-- <li > <a routerLink="/home" routerLinkActive="active"  class="toggleNavbar"> <span class="alarms-icn"> </span>Alarms</a></li> -->
+
+   </ul>
+   </div>
+</aside>

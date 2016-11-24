@@ -1,7 +1,7 @@
 import { Component, Directive,AfterViewInit,OnInit } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RestService } from './services/rest.service';
-import {UserDashboardComponent} from '../app/user-dashboard/user-dashboard.component';
+
 
 
 @Component({
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
 
 
  public isCollapsed:boolean = true;
- constructor(private restService: RestService,private userDashboardComponent:UserDashboardComponent) {}
+ constructor() {}
 
   public collapsed(event:any):void {
     console.log(event);

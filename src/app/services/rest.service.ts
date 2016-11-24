@@ -7,8 +7,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import jwt from './mockTemplate';
 
-import  {Hero}  from './hero';
-import { HEROES } from './mock-heroes';
 
 @Injectable()
 export class RestService {
@@ -16,18 +14,6 @@ export class RestService {
  DefaultTemplate = jwt;
 
 constructor (private http: Http) { console.log("RestService"+ jwt);  console.log(jwt);  }
-
-
-
- getHeroes(): Promise<Hero[]> {
-   return Promise.resolve(HEROES);
- }
-
- getHeroesSlowly(): Promise<any[]> {
-   return new Promise<any[]>(resolve =>
-     setTimeout(resolve, 2000)) // delay 2 secondsx`xx
-     .then(() => this.getHeroes());
- }
 
 
   POST(query, url) {
