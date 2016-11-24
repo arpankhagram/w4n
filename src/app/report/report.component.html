@@ -1,0 +1,297 @@
+<!-- <section class="page-title">
+   <div class="container-fluid">
+     <div class="row">
+       <div class="col-lg-12">
+         <h2>My Reports</h2>
+       </div>
+     </div>
+   </div>
+ </section> -->
+
+<!-- //New -->
+<!-- {{editMode}} -->
+<section *ngIf="!editMode" class="page-title">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Reports</h2>
+
+               <div class="reportHeader pull-right">
+                   <div class="reportInnerHeader">
+                           <div class="pull-right">
+                           <ul class="reportMenu">
+                               <li>
+                                  <a href="#filterTab" class="filterReport">
+                                   <span></span>
+                                   </a>
+                                   <span></span>
+                                   <div class="tabHolder" id="filterTab">
+                                       <span class="arrow"></span>
+                                      <h3>Filter Report</h3>
+
+
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Granularity</label>
+                      <div class="col-sm-9">
+                        <select class="selectpicker" id="granularity" [(ngModel)]="filterReport.granularitySelected">
+                          <option *ngFor="let granularitySelected of filterReport.granularityAll" >{{granularitySelected}}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">From</label>
+                      <div class="col-sm-9">
+                     <input class="selectpicker" type="date" id="fromdate" placeholder="From"  [(ngModel)]="filterReport.fromDate" [value]=value  name="fromDate" text="fromDate" >
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">To</label>
+                      <div class="col-sm-9">
+                     <input class="selectpicker" type="date" id="todate" placeholder="To"  name="toDate"  [(ngModel)]="filterReport.toDate" text="toDate" >
+                      </div>
+                    </div>
+                    <!-- <datepicker  class="popup1" [(ngModel)]="filterReport.fromDate"></datepicker> -->
+
+                    <div class="form-group">
+                      <div class="col-sm-9 offset-xs-3">
+                        <button type="submit" class="btn btn-default" id="closeFilter">Cancel</button>
+                        <button type="submit" class="btn  btn-success" (click)="makeFilteredReport()">Apply</button>
+                      </div>
+                    </div>
+              </div>
+           </div>
+       </li>
+       <li class="xactive">
+          <!-- <a routerLink = "/newReport" routerLinkActive="active"  class="toggleNavbar" class="editReport">
+             <span></span>
+          </a> -->
+          <a (click)="getTemplateConfig()"  class="toggleNavbar" class="editReport">
+             <span></span>
+          </a>
+           <span></span>
+
+           <div class="tabHolder editReportHolder" id="editTab">
+               <span class="arrow"></span>
+                <h3>Edit Report</h3>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Granularity</label>
+                      <div class="col-sm-9">
+                        <select class="selectpicker">
+                            <option>Day</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Duration</label>
+                      <div class="col-sm-9">
+                         <div class="date">
+                            <div class="dayDrop">
+                              <select class="selectpicker">
+                                <option>Last</option>
+                              </select>
+                             </div>
+                             <div class="dayDrop">
+                              <select class="selectpicker">
+                                <option>day</option>
+                              </select>
+                             </div>
+                              <div class="dateIcon">
+                                  <input type="text" id="dateSelect" name="from" value="">
+                              </div>
+
+                          </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Agrregation</label>
+                      <div class="col-sm-9">
+                        <select class="selectpicker">
+                            <option>SUM</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Property</label>
+                      <div class="col-sm-9">
+                        <select class="selectpicker">
+                            <option></option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Metric</label>
+                      <div class="col-sm-9">
+                        <select class="selectpicker">
+                            <option></option>
+                          </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class=" offset-xs-3 col-sm-9">
+                        <button type="submit" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-success">Save</button>
+                      </div>
+                    </div>
+              </div>
+           </div>
+       </li>
+
+       </ul>
+
+       <ul class="deleteIcon">
+       <li>
+          <a class="deleteReport">
+           <span></span>
+           </a>
+       </li>
+       </ul>
+                       </div>
+                    </div>
+                </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+ <section *ngIf="!editMode" class="main-content">
+       <div class="container-fluid">
+           <div class="row">
+
+   <!-- <div *ngIf="ReportType == "bar">
+  <app-bar-chart [barCharts]="Report"></app-bar-chart>
+ </div> -->
+
+ <div *ngIf="showMultiLine">
+ <app-multi-line [multilineChart]="Report"></app-multi-line>
+</div>
+
+<div *ngIf="showBar">
+  <app-bar-chart [barCharts]="Report"></app-bar-chart>
+</div>
+
+<div *ngIf="showLine">
+  <app-line-chart [lineCharts]="Report"></app-line-chart>
+</div>
+
+<div *ngIf="showGauge">
+  <app-gauge-chart [guageChart]="Report"></app-gauge-chart>
+</div>
+
+<div *ngIf="showTable">
+<app-data-table [tabledata] ="Report"></app-data-table>
+</div>
+
+           </div>
+       </div>
+   </section>
+
+    <app-newreport *ngIf="editMode" [editReportData]="reportTemplate"  [isEditTemplate]="editMode"></app-newreport>
+
+
+
+ <!-- <script>
+   $(document).ready(function(){
+   $(".reportMenu li a").click(function () {
+     alert("Clicked");
+        var tablink = $(this).attr('href');
+        $(".tabHolder").fadeOut();
+        $(tablink).fadeIn();
+        $(this).parents(".reportMenu").find('li').removeClass("active");
+        $(this).parents(".reportMenu li").addClass("active");
+        return false;
+    });
+
+    var dateFormat = "mm/dd/yy",
+      from = $( "#dateSelect, #dateSelect1" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 2
+        }),
+//        .on( "change", function() {
+//          to.datepicker( "option", "minDate", getDate( this ) );
+//        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+
+      return date;
+    }
+});
+
+ </script>-->
+<!-- //Old -->
+ <!-- <section class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+
+                    <div *ngFor="let multilineGraph of multilineGraphReports">
+                  <app-multi-line [multilineChart]="multilineGraph"></app-multi-line>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="widget">
+
+<br>
+                            <label>From Date : </label>
+
+                            <input type="date" id="fromdate" name="from" value="">
+
+<br>
+<br>
+
+
+
+                            <label >To Date :&nbsp;&nbsp;&nbsp; </label>
+
+                            <input type="date" id="todate" name="to" value="">
+
+<br>
+<br>
+                                 <label>Granularity : </label>
+
+                       <select >
+                         <option>All</option>
+                         <option>Hour</option>
+                         <option>Day</option>
+                         <option>Min</option>
+                         </select>
+
+
+<br>
+<br>
+
+
+                      <div>
+                        <button type="submit" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-success">Apply</button>
+                      </div>
+<br>
+                    </div>
+                  </div>
+                </div>
+  </div>
+</section> -->

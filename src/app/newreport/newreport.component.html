@@ -1,0 +1,374 @@
+
+
+
+
+    <section class="page-title">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>New Report</h2>
+            <div class="top-icn"><a href="#" class="editEvent"><img src="images/top-icons.jpg" width="127" height="41" alt=""/></a><a href="#0" class="cd-btn"><img src="images/alarm.jpg" width="127" height="41" alt=""/></a> </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+           		  <div class="col-md-12">
+<div class="reportInnerHeader reports">
+  <div class="reportHeader col-md-6">
+      <div class=" ">
+<form class="form-horizontal" novalidate [formGroup] = "newReportForm" [hidden]="submitted">
+     <div class="form-group">
+                                 <label class="col-sm-3 control-label" >Report Title</label>
+                                 <div class="col-sm-9">
+                                   <input type="text" class="form-control" formControlName="ReportTitle">
+                                 </div>
+                               </div>
+
+                                 <div class="form-group">
+                                 <label class="col-sm-3 control-label">Report Type</label>
+                                 <div class="col-sm-9">
+                                  <select class="selectpicker" formControlName="ReportType"  >
+                                       <option *ngFor= "let reportType of newReportModel.reportTypes"  >{{reportType}}</option>
+                                        <!-- <option>Graph</option>
+                                         <option>Table</option> -->
+          </select>
+                                 </div>
+                               </div>
+
+                                 <div class="form-group" *ngIf="showGraphTypeHtmltag ? true : false">
+                                 <label class="col-sm-3 control-label">Graph Type</label>
+                                 <div class="col-sm-9">
+                                  <select class="selectpicker" formControlName="graphType">
+                                       <option *ngFor= "let graphType of newReportModel.graphTypes">{{graphType}}</option>
+</select>
+                                 </div>
+                               </div>
+                                  <div class="form-group" *ngIf="showPropertiesHtmlTag ? true : false">
+                                 <label class="col-sm-3 control-label">Properties</label>
+                                 <!-- <div class="col-sm-9" *ngIf="showMultiSelectHtmlTag ? true : false">
+                                  <select multiple class="selectpicker mulitselect" formControlName="properties">
+                                       <option *ngFor= "let property of newReportModel.properties">{{property}}</option>
+                                  </select>
+                                 </div> -->
+
+                                 <div class="col-sm-9">
+                                  <select class="selectpicker" formControlName="properties">
+                                       <option *ngFor= "let property of newReportModel.properties">{{property}}</option>
+                                  </select>
+                                 </div>
+                               </div>
+
+
+     <div class="form-group">
+                                 <label class="col-sm-3 control-label">Granularity</label>
+                                 <div class="col-sm-9">
+                                   <select class="selectpicker" formControlName="granularity">
+                                       <option  *ngFor= "let granularity of newReportModel.granularities">{{ granularity }}</option>
+                                   </select>
+                                 </div>
+                               </div>
+                               <div class="form-group">
+                                                   <label class="col-sm-3 control-label">From </label>
+                                                   <div class="col-sm-9">
+                                                  <input class="selectpicker" type="date" id="todate" formControlName="fromDate" text="toDate" >
+                                                   </div>
+                                                 </div>
+                               <div class="form-group">
+                                                   <label class="col-sm-3 control-label">To</label>
+                                                   <div class="col-sm-9">
+                                                  <input class="selectpicker" type="date" id="todate"  formControlName="toDate"   text="toDate" >
+                                                   </div>
+                                                 </div>
+       <div class="form-group">
+                                 <label class="col-sm-3 control-label">Filter</label>
+                                 <div class="col-sm-8 report-search">
+                                   <input type="text"  name="" value="" class="form-control" formControlName="filterExpression">
+                                 </div>
+       <div class="dateIcon">
+                                             <input  type="text" id="editSelect" name="from" value="" data-toggle="modal" data-target="#myModal" readonly>
+                                  </div>
+
+
+                               </div>
+                       <div class="form-group" *ngIf="showMultiSelectAggrHtmlTag ? false : true">
+                                 <label class="col-sm-3 control-label">Aggregation</label>
+                                 <div class="col-sm-9">
+                                   <select class="selectpicker" formControlName="aggregation" >
+                                       <option *ngFor= "let aggregation of newReportModel.aggregationTypes" value={{aggregation}}>{{aggregation}}</option>
+
+                                    </select>
+                                 </div>
+
+                               </div>
+                               <!-- <div class="form-group" *ngIf="showMultiSelectAggrHtmlTag ? true : false">
+                                   <label class="col-sm-3 control-label">Aggregation</label>
+
+                                                         <div class="col-sm-9">
+                                                           <select multiple class="selectpicker mulitselect" formControlName="aggregation" >
+                                                               <option *ngFor= "let aggregation of newReportModel.aggregationTypes" value={{aggregation}}>{{aggregation}}</option>
+
+                                                            </select>
+                                                         </div>
+                                                       </div> -->
+                               <!-- <div class="form-group">
+                                 <label class="col-sm-5 control-label">Property</label>
+                                 <div class="col-sm-3">
+                                   <select class="selectpicker">
+                                       <option></option>
+                                     </select>
+                                 </div>
+                               </div> -->
+                               <div class="form-group">
+                                 <label class="col-sm-3 control-label">Metric</label>
+                                 <div class="col-sm-9">
+                                   <select class="selectpicker" formControlName="metric">
+                                       <option *ngFor= "let kpi of newReportModel.kpis" >{{ kpi }}</option>
+                                     </select>
+                                 </div>
+
+                               </div>
+
+                            <div class="form-group" *ngIf="showThresholdSelectHtmlTag ? true : false">
+                                 <label class="col-sm-3 control-label">Threshold</label>
+                                 <div class="col-sm-9" >
+                                   <select class="selectpicker" formControlName="threshold">
+                                       <option *ngFor= "let threshold of newReportModel.threholdValues" >{{ threshold }}</option>
+                                     </select>
+                                 </div>
+                               </div>
+       <div class="form-group">
+       <div class="col-sm-5"></div>
+                                 <div class="col-sm-7 offset-md-3">
+                                   <button type="submit" class="btn btn-default">Cancel</button>
+                                   <button (click)="saveNewReportTemplate()" class="btn btn-success">Save</button>
+                                 </div>
+                               </div>
+</form>
+
+       </div>
+       <div id="reportPanel" class="">
+        <div *ngIf="multilineGraph"> <app-multi-line [multilineChart]="multilineGraph"></app-multi-line></div>
+         <div *ngIf="pieGraph"> <app-pie-chart [pieCharts]="pieGraph"></app-pie-chart></div>
+        <div *ngIf="lineGraph">  <app-line-chart [lineCharts]="lineGraph"></app-line-chart></div>
+        <div *ngIf="barGraph">  <app-bar-chart [barCharts]="barGraph"></app-bar-chart></div>
+        <div *ngIf="guageGraph"> <app-gauge-chart [guageChart]="guageGraph"></app-gauge-chart></div>
+                <div *ngIf="multilineGraph">        <app-column-chart [columnChart]="multibarGraph"></app-column-chart>
+                </div>
+       </div>
+   </div>
+</div>
+
+
+                  </div>
+
+
+            </div>
+        </div>
+    </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h4 class="modal-title">Edit Filter</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+                 <div class="col-sm-4">
+                    <select class="selectpicker" >
+                              <!-- <option *ngFor= "let kpi of newReportModel.kpis">{{ kpi }}</option> -->
+                    </select>
+                  </div>
+				  <div class="col-sm-3">
+                    <select class="selectpicker">
+                        <option>is</option>
+                        <option>is not </option>
+                    </select>
+                  </div>
+				  <div class="col-sm-5">
+
+        <input type="text" class="form-control">
+
+                  </div>
+           </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		   <button id="saveReport" type="button" class="btn btn-success" data-dismiss="modal">Apply</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+<!-- /#wrapper -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js" ></script>
+<script src="js/tether.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.js"></script>
+<!-- For date picker -->
+<script src="js/jquery-ui.js"></script>
+<script>
+// Side Bar Toggel
+	$(document).ready(function() {
+	 $("#menu-toggle-2").click(function(e) {
+       // e.preventDefault();
+        $(".silide-nav").toggleClass("toggled-2");
+		$(this).parent('.menu-btn').toggleClass("inc-width")
+      });
+
+	$(".silide-nav ul li a").click(function(e) {
+	 $(".silide-nav").removeClass("toggled-2");
+	  $(".menu-btn").removeClass("inc-width");
+		});
+
+// 100% percent height
+/*$(document).ready(function(){
+   var h = $(window).height() - 64;
+      $(".silide-nav").css("min-height", h);
+      $(window).resize(function() {
+		 var xh = $(window).height();
+         $(".silide-nav").css("min-height", xh);
+   });
+});*/
+
+$(document).ready(function(){
+$(".silide-nav").height( $(".page-content").height() );
+});
+
+
+    $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+    });
+});
+
+// Popover
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();  // initialize popover
+});
+
+$(document).ready(function () {
+
+  $('.tooltip-right').tooltip({
+    placement: 'right',
+    viewport: {selector: 'body', padding: 2}
+  })
+  $('.tooltip-bottom').tooltip({
+    placement: 'bottom',
+    viewport: {selector: 'body', padding: 2}
+  })
+  $('.tooltip-viewport-right').tooltip({
+    placement: 'right',
+    viewport: {selector: '.container-viewport', padding: 2}
+  })
+  $('.tooltip-viewport-bottom').tooltip({
+    placement: 'bottom',
+    viewport: {selector: '.container-viewport', padding: 2}
+  })
+})
+
+
+// Show/hide Widget Action
+$( ".editEvent" ).click(function() {
+	 $(".edit-widget").toggleClass("show-action");
+	var spans = $( ".widget" );
+$( "div" ).find( spans ).toggleClass("edit-mode");
+
+ });
+
+
+$( "#menu-toggle-1" ).click(function() {
+	   $(".silide-nav2").toggleClass("toggled-2");
+	//var spans = $( ".widget" );
+//$( "div" ).find( spans ).toggleClass("edit-mode");
+
+ });
+
+jQuery(document).ready(function($){
+	//open the lateral panel
+	$('.cd-btn').on('click', function(event){
+		event.preventDefault();
+		$('.cd-panel').addClass('is-visible');
+
+	});
+	//clode the lateral panel
+	$('.cd-panel').on('click', function(event){
+		if( $(event.target).is('.cd-panel') || $(event.target).is('.cd-panel-close') || $(event.target).is('.closepan') ) {
+			$('.cd-panel').removeClass('is-visible');
+			event.preventDefault();
+		}
+	});
+
+  // $('#saveReport').on('click', function(event){
+  //   // if( $(event.target).is('.cd-panel') || $(event.target).is('.cd-panel-close') || $(event.target).is('.closepan') ) {
+	// 	// 	$('.cd-panel').removeClass('is-visible');
+	// 	// 	event.preventDefault();
+	// 	// }
+  //   $('.form-horizontal').fadeOut();
+  //   $("#reportPanel").show();
+  //   event.preventDefault();
+  // });
+
+
+
+});
+
+$(document).ready(function(){
+   $(".reportMenu li a").click(function () {
+        var tablink = $(this).attr('href');
+        $(".tabHolder").fadeOut();
+        $(tablink).fadeIn();
+        $(this).parents(".reportMenu").find('li').removeClass("active");
+        $(this).parents(".reportMenu li").addClass("active");
+        return false;
+    });
+
+    var dateFormat = "mm/dd/yy",
+      from = $( "#dateSelect, #dateSelect1" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 2
+        }),
+//        .on( "change", function() {
+//          to.datepicker( "option", "minDate", getDate( this ) );
+//        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+
+      return date;
+    }
+});
+
+ </script>

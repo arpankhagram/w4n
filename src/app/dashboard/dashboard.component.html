@@ -1,0 +1,67 @@
+<section class="page-title">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Dashboard</h2>
+          <div class="top-icn" #alarms><a class="editEvent" href="#"><img width="127" height="41" alt="" src="assets/images/top-icons.jpg"></a><a class="cd-btn alrm-icn" href="#0" id="alarms"><img width="127" height="41" alt="" src="assets/images/alerms-icn.png"></a> </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cd-panel from-right rightPanelHeader">
+    <div class="cd-panel-container" #close>
+    <header class="cd-panel-header clearfix">
+      <h1><img src="assets/images/alerms-icn.png"/>&nbsp;&nbsp;Recent Alarms</h1>
+      <a href="#" class="cd-panel-close" id="close">Close</a>
+    </header>
+    <app-recentalarm></app-recentalarm>
+
+  </div>
+</div>
+
+
+<section  class="main-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div *ngIf="templateConfig">
+            <div *ngIf="nullReports">
+
+
+            <div *ngFor="let multilineGraph of multilineGraphReports">
+         <app-multi-line [multilineChart]="multilineGraph"></app-multi-line>
+         </div>
+
+         <div *ngFor="let pieGraph of pieGraphReports">
+              <app-pie-chart [pieCharts]="pieGraph"></app-pie-chart>
+             </div>
+
+
+
+          <div *ngFor="let lineGraph of lineGraphReports">
+              <app-line-chart [lineCharts]="lineGraph"></app-line-chart>
+          </div>
+
+
+          <div *ngFor="let barGraph of barGraphReports">
+              <app-bar-chart [barCharts]="barGraph"></app-bar-chart>
+         </div>
+
+         <div *ngFor="let guageGraph of guageGraphReports">
+           <app-gauge-chart [guageChart]="guageGraph"></app-gauge-chart>
+          </div>
+
+         <div *ngFor="let multibarGraph of multibarGraphReports">
+           <app-column-chart [columnChart]="multibarGraph"></app-column-chart>
+         </div>
+
+
+         <div *ngFor = "let table of tableReports" >
+        <app-data-table [tabledata] ="table"></app-data-table>
+        </div>
+
+       </div>
+       </div>
+     </div>
+      </div>
+</section>

@@ -1,0 +1,145 @@
+<!-- <h3> All alarms</h3> -->
+
+
+<section class="page-title">
+ <div class="container-fluid">
+   <div class="row">
+     <div class="col-lg-12">
+       <h2>All Alarms</h2>
+       <div class="top-icn"><a href="#0"  class=" cd-btn export-icn"> Export</a> </div>
+     </div>
+   </div>
+ </div>
+</section>
+   <section class="main-content">
+      <div class="alarm-info-cont">
+   <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="alarm-info">
+    <span class="alarm-icn">
+    <img src="/assets/images/alert-icn.png"  alt=""/> </span>
+    <span class="count">{{alaramsCount}}</span>
+    <span class="deviceName">Alarms </span>
+    </div>
+        <div class="alarm-info">
+    <span class="alarm-icn">
+    <img src="assets/images/check-icn.png"  alt=""/> </span>
+    <span class="count"></span>
+    <span class="deviceName">Acknowledge  </span>
+    </div>
+        <div class="alarm-info unack">
+    <span class="alarm-icn">
+    <img src="assets/images/check-icn.png"  alt=""/> </span>
+    <span class="count"></span>
+    <span class="deviceName">Unacknowledge </span>
+    </div>
+    </div></div>
+    </div>
+  </div>
+
+<div class="container-fluid">
+    <div class="col-md-12">
+
+
+
+      <div class="alarm-section">
+              <!-- Nav tabs -->
+      <ul class="nav nav-tabs pull-md-right outernav" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#home" role="tab"> <img src="assets/images/grid-view.png"  alt=""/> </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#profile" role="tab"><img src="assets/images/list-view.png"  alt=""/> </a>
+        </li>
+
+      </ul>
+      <div class="pull-sm-left">
+                      <form id="custom-search-form" class="pull-sm-left">
+                        <div class="input-append">
+                          <input type="text" class="search-query" placeholder="Search">
+                          <button type="submit" class="search-btn"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </div>
+                      </form>
+                  <div class="filter-icn"><a href="#"> <img src="assets/images/filter-icn.png"  alt=""/></a> </div>
+                  <div class="form-group pull-sm-left mar0">
+
+                                <select class="form-control" id="pagesel" [(ngModel)]="pageSizeSelected" (ngModelChange)="onChangePageSize($event)">
+                                  <option *ngFor="let pageSize of pageSizeArr" >{{pageSize}}</option>
+                                </select>
+                    </div>
+                  </div>
+      <div class="clearfix"> </div>
+
+
+<div class="clearfix"></div>
+<div class="tab-content">
+    <div class="tab-pane active" id="home" role="tabpanel">
+    <table  *ngIf="!showList" class="table col-md-12">
+      <thead class="thead-inverse">
+        <tr>
+            <!-- <th *ngFor="let head of tableheadings">{{head}}</th> -->
+              <th *ngFor="let head of headerList">{{head}}</th>
+            <!-- <th >head 1</th>
+            <th >head 2</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of allAlarms" [ngClass]="{'colorStrip greenBorder':data.severity=='5' || data.severity==4,'colorStrip yelloBorder':data.severity=='3' || data.severity=='2' || data.severity==1}">
+
+          <!-- "timeStamp","className","instanceName","eventName","elementClassName","elementName",
+          "active","eventText","eventDescription","severity","troubleTicketId","vendor","firstNotifiedAt",
+          "model","occurrenceCount" -->
+
+         <td>{{data.timeStamp}}</td>
+         <td>{{data.className}}</td>
+         <td>{{data.instanceName}}</td>
+         <td>{{data.eventName}}</td>
+         <td>{{data.elementClassName}}</td>
+         <td>{{data.elementName}}</td>
+         <td>{{data.active}}</td>
+         <td>{{data.eventText}}</td>
+         <td>{{data.eventDescription}}</td>
+         <td>{{data.severity}}</td>
+         <!-- <td>{{data.troubleTicketId}}</td>
+         <td>{{data.vendor}}</td>
+         <td>{{data.firstNotifiedAt}}</td>
+         <td>{{data.model}}</td>
+         <td>{{data.occurrenceCount}}</td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+    <div class="tab-pane" id="profile" role="tabpanel">
+     <ul id="accordion" role="tablist" aria-multiselectable="true" class="alarmAccordian">
+          <li  *ngFor="let data of allAlarms" class="colorStrip " [ngClass]="{'greenBorder':data.severity=='5' || data.severity==4,' yelloBorder':data.severity=='3' || data.severity=='2' || data.severity==1}">
+                                 <div class="widgetList">
+                                     <div class="row">
+                                         <div class="col-md-10">
+                                           <ul class="innerWidgetList" >
+                                               <li> <span>|</span><span>Class name:</span>{{data.className}} </li>
+                                               <li> <span>|</span><span>Instance Name:</span> {{data.instanceName}} </li>
+                                               <li> <span>|</span><span>Time Stamp:</span>  {{data.timeStamp}} </li>
+                                               <li> <span>|</span><span>Severity:</span> {{data.severity}}   </li>
+                                          </ul>
+                                        </div>
+                                    </div>
+                                 </div>
+          </li>
+      </ul>
+    </div>
+</div>
+
+    <nav aria-label="Page navigation ">
+      <ul class="pagination">
+       <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage"
+        class="pagination-sm" (pageChanged)="pageChanged($event)"
+          previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+      </ul>
+    </nav>
+</div>
+</div>
+</div>
+
+</section>
